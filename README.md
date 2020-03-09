@@ -26,4 +26,4 @@ Follow the steps given below:
 11) ``npm install``
 12) ``npm install -D nodemon``
 13) ``npm run dev``
-14) Open Chrome browser and type ``http://localhost:3000`` 
+14) Open Chrome browser and type ``http://localhost:5000`` 
