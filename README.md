@@ -19,7 +19,7 @@ Follow the steps given below:
 	4) On the next page, uncheck ***Install MongoDB Compass***. Then press install. It might ask for restarting your PC. 
 6) Open CMD as administator and set path to ***C:\mongodb\bin*** and run ***`net start mongodb`***. Ignore if mongoDB is already activated.
 7) Type ***`mongo`*** on terminal.
-8) Type ***`>use trial1`*** on command line.
+8) Type ***`>use trial2`*** on command line.
 9) Open VS Code and press 
 <kbd>Ctrl +`</kbd>
 10) Open folder **trail2** which you have downloaded from here.
