@@ -28,3 +28,13 @@ Follow the steps given below:
 12) ***``npm install -D nodemon``***
 13) ***``npm run dev``***
 14) Open Chrome browser and type ***``http://localhost:5000``*** 
+
+
+## Remaining Work
+
+1) Propery Page : When user click on the property then the next page should contain its all details including images.
+2) My Properties : which shows seller about his or her unsold properties. This page contains edit,delete and request verification of particular property. Though all three functionalities are successfully implemented, we just need my property page to display all these.
+3) Statistic Page - Frontend and backend
+4) Advanced filter/ search bar
+5) Merging Meet's index page to running backend code.
+6) Other tools like EMI calculator, price estimator etc.., if time permits.
