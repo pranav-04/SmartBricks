@@ -1,5 +1,5 @@
 # Trail 2:SmartBricks
-Follow the steps given below:
+## Download trail2. Also, download ***entire folder*** called ***bower_components*** from the path: ***``trial 1>public``*** and paste this entire folder in ***``trail2>public``*** 
 ## Procedure
 1) Download nodejs and install that software
 	link : [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
