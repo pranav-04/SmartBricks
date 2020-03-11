@@ -33,10 +33,16 @@ block content
               | Are you a Builder
             .form-holder
               i.zmdi.zmdi-account-o
-              select.form-control(name='isBuilder' id='isBuilder' , value = property.isBuilder)
-                option.option(value='yes') Yes
-                option.option(value='no') No
-              i.zmdi.zmdi-chevron-down
+              if property.isBuilder == 'Yes'
+                select.form-control(name='isBuilder' id='isBuilder')
+                  option.option(value='Yes') Yes
+                  option.option(value='No') No
+                i.zmdi.zmdi-chevron-down
+              else
+                select.form-control(name='isBuilder' id='isBuilder')
+                  option.option(value='No') No
+                  option.option(value='Yes') Yes
+                i.zmdi.zmdi-chevron-down
         .form-row
           .form-col
             label(for='description')
