@@ -1,0 +1,24 @@
+extends layout2
+
+append head
+  link(rel="stylesheet" href="/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css")
+  link(rel ="stylesheet" href='/css/style_ref.css')
+
+block content
+  .img
+    .wrapper
+      .inner
+        .image-holder
+          img(src='/images/7.jpeg')
+        form(method='POST' action='/users/login')
+          != messages('message',locals)
+          if errors
+            h4 #{errors}
+          h5 Login
+          .form-wrapper
+            input.form-control(type='username' placeholder='Username' , name ='username')
+            i.zmdi.zmdi-account
+          .form-wrapper
+            input.form-control(type='password' placeholder='Password',name = 'password')
+            i.zmdi.zmdi-eye
+          input.btn.btn-primary(type='submit',value = 'Login') 

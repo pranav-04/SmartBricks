@@ -1,0 +1,11 @@
+extends layout2
+
+append head
+  link(rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css")
+
+block content
+  .header
+    h1  Find Every Place Near You
+    .form-box
+      input.search-field.location(type='text' placeholder='Location, Property, Builder...')
+      button.search-btn(type='button')  Search
