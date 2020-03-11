@@ -68,6 +68,9 @@ let propertySchema = mongoose.Schema({
     },
     Club_House:{
         type: Boolean,required: true
+    },
+    Price:{
+        type: Number,required:true
     }
 })
 
