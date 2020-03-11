@@ -1,4 +1,4 @@
-# Trial 1:SmartBricks
+# Trail 2:SmartBricks
 Follow the steps given below:
 ## Procedure
 1) Download nodejs and install that software
@@ -15,15 +15,16 @@ Follow the steps given below:
 5) Install mongoDB
 	1) install mongoDB on custom method
 	2) Browse the folder and select C drive itself. Then make new folder name mongodb in C drive and choose that folder to install software.
-	3) On the next page, append '\db' in data file path. **Remember not to change log file path. Just change data path to 'C:\mongodb\data\db'.**
-	4) On the next page, uncheck **Install MongoDB Compass**. Then press install. It might ask for restarting your PC. 
-6) Open CMD as administator and set path to **C:\mongodb\bin** and run `net start mongodb`. Ignore if mongoDB is already activated.
-7) Type `mongo` on terminal.
-8) Type `>use trial1` on command line.
+	3) On the next page, append '\db' in data file path. ***Remember not to change log file path. Just change data path to 'C:\mongodb\data\db'.***
+	4) On the next page, uncheck ***Install MongoDB Compass***. Then press install. It might ask for restarting your PC. 
+6) Open CMD as administator and set path to ***C:\mongodb\bin*** and run ***`net start mongodb`***. Ignore if mongoDB is already activated.
+7) Type ***`mongo`*** on terminal.
+8) Type ***`>use trial1`*** on command line.
 9) Open VS Code and press 
 <kbd>Ctrl +`</kbd>
-10) Open folder **trial1** which you have downloaded from here.
-11) ``npm install``
-12) ``npm install -D nodemon``
-13) ``npm run dev``
-14) Open Chrome browser and type ``http://localhost:5000`` 
+10) Open folder **trail2** which you have downloaded from here.
+11) Also, download ***entire folder*** called ***bower_components*** from the path: ***``trial 1>public``*** and paste this entire folder in ***``trail2>public``***
+11) ***``npm install``***
+12) ***``npm install -D nodemon``***
+13) ***``npm run dev``***
+14) Open Chrome browser and type ***``http://localhost:5000``*** 
