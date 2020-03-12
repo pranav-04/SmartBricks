@@ -25,7 +25,7 @@
 10) Open folder **trail2** which you have downloaded from here.
 11) Also, download ***entire folder*** called ***bower_components*** from the path: ***``trial 1>public``*** and paste this entire folder in ***``trail2>public``***
 11) ***``npm install``***
-12) ***``npm install -D nodemon``***
+12) ***``npm install -g nodemon``***
 13) ***``npm run dev``***
 14) Open Chrome browser and type ***``http://localhost:5000``*** 
 
