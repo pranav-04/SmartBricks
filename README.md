@@ -1,5 +1,5 @@
-# Trail 2:SmartBricks
-## Download trail2. Also, download ***entire folder*** called ***bower_components*** from the path: ***``trial 1>public``*** and paste this entire folder in ***``trail2>public``*** 
+# Trail 3:SmartBricks
+## Download trail 3. Also, download ***entire folder*** called ***bower_components*** from the path: ***``trial 1>public``*** and paste this entire folder in ***``trail2>public``*** 
 ## Procedure
 1) Download nodejs and install that software
 	link : [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
@@ -36,5 +36,4 @@
 2) My Properties : which shows seller about his or her unsold properties. This page contains edit,delete and request verification of particular property. Though all three functionalities are successfully implemented, we just need my property page to display all these.
 3) Statistic Page - Frontend and backend
 4) Advanced filter/ search bar
-5) Merging Meet's index page to running backend code.
-6) Other tools like EMI calculator, price estimator etc.., if time permits.
+5) Other tools like EMI calculator, price estimator etc.., if time permits.
