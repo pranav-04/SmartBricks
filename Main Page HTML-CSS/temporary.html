@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+
+    <head>
+        <meta charset="UTF-8">
+        
+        <title>SmartBricks</title>
+      <!-- Bootstrap css and java scripts-->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <!-- end of bootstrap  links-->
+        <link href="timeline.css" rel="stylesheet" type ="text/css">
+        <link href="navbar.css" rel="stylesheet" type ="text/css">
+        <link href="footer1.css" rel="stylesheet" type ="text/css">
+        <link href="menuBar.css" rel="stylesheet" type="text/css">
+        <link href="main_page.css" rel="stylesheet" type ="text/css">
+    </head>
+
+    
+    <body lang="en">
+    <div>
+       
+        <!-- THe side nav  -------------------------------------------------------------------------------------   ----------------------- -->
+        <div id="mySidenav" class="sidenav"> 
+            <ul>
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Buy</a></li>
+                <li><a href="#">Sell</a></li>
+                <li><a href="#">Rent</a></li> 
+                <li><a href ="#">Tools</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><img><a>LP</a></img> <button style="height:inherit; background-color:inherit;Border:none"><a>login/signup</a></button></<button><li>
+                        
+            </ul>    
+        </div>
+        <!-- ------------------------------------------------------------------------------------------------------------------------------ -->
+        <nav class="nav">
+            <div class="container1">
+                <div class="logo" style="float:left">
+                    <a href="#">SmartBricks</a>
+                </div>
+
+
+                <div id="mainListDiv" class="main_list" style="float:right">
+
+                    <ul class="navlinks" >
+                        <li ><a href="#">Home</a></li>
+                        <li><a href="#">Buy</a></li>
+                        <li><a href="#">Sell</a></li>
+                        <li><a href="#">Rent</a></li> 
+                        <li><a href ="#">Tools</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <!--Login photo-->  
+                        <li><img><a>LP</a></img> <button style="height:inherit; background-color:inherit;Border:none"><a onclick=openlogin()>login/signup</a></button></<button><li>
+                    
+                    </ul>
+                </div>
+                <span class="navTrigger">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </span>
+                
+            </div>
+                
+        </nav>
+     
+
+          
+        </div>
+
+        <!-- ---------------------------------------------------------------------------------------------------------------------------------------/
+        
+        
+        -->
+       
+        <div style="height: auto">
+            <!-- just to make scrolling effect possible -->
+            
+            <!-- this is for the slider -->
+            
+                <div class="header">
+                    <form>
+                        <h1 class="myH1">Find the perfect Property For you.</h1>
+                        <div class="form-box">
+                            <input type="text" class="search-field business" placeholder="Location"></input>
+                            <input type="text" class="search-field location" placeholder="Maximum Price"></input>
+                            <button class="search-btn" type="button">Search</button>
+        
+                        </div>
+                    </form>
+                </div> 
+                <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel" style="Overflow:hidden">
+                    <!-- <div style="position:absolute;top:0;left:0px;"> -->
+                    <div class="carousel-inner">
+                      <div class="carousel-item active" data-interval="4000">
+                        <img src="images/1.png"  style="overflow:hidden"class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item" data-interval="4000">
+                        <img src="images/1.png" style="overflow:hidden" class="d-block w-100" alt="...">
+                      </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev"   style="opacity:0">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next" style="opacity:0">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </a> 
+                  <!-- </div>    -->
+                </div>
+            </div> 
+
+               
+            <!-- For any extra thing which we may want to add -->
+            
+            <div style=" width:100%; height:550px;background-color: blue;">
+            
+            </div>
+
+
+            <!-- the mainbar to show the list of featured items -->
+            <div class="display-content"  style="overflow:hidden">
+                <div style="padding-top:40px;">
+                    <h2 style="padding-top:30px;padding-bottom:20px;font-size: 4rem;"">Featured Items</h2>
+                </div>
+
+                <div class="scrolling-wrapper" style="overflow-x:scroll; overflow-y: hidden;white-space: nowrap;">
+                   
+
+                      <div class="card">
+                        <img class="card-img-top" src="images/1.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p>Location: Unknown(City name)</p>
+                            <p>Price: Unknown</p>
+                            <p><a link="#">View More.</a></p>
+                        </div>
+                      </div>
+                    
+                        
+                      <div class="card">
+                        <img class="card-img-top" src="images/1.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p>Location: Unknown(City name)</p>
+                            <p>Price: Unknown</p>
+                            <p><a link="#">View More.</a></p>
+                        </div>
+                      </div>
+                      
+                      <div class="card">
+                        <img class="card-img-top" src="images/1.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p>Location: Unknown(City name)</p>
+                            <p>Price: Unknown</p>
+                            <p><a link="#">View More.</a></p>
+                        </div>
+                      </div>
+                      
+                      <div class="card">
+                        <img class="card-img-top" src="images/1.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p>Location: Unknown(City name)</p>
+                            <p>Price: Unknown</p>
+                            <p><a link="#">View More.</a></p>
+                        </div>
+                      </div>
+                      
+                      <div class="card">
+                        <img class="card-img-top" src="images/1.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p>Location: Unknown(City name)</p>
+                            <p>Price: Unknown</p>
+                            <p><a link="#">View More.</a></p>
+                        </div>
+                      </div>
+
+                      
+                      <div class="card">
+                        <img class="card-img-top" src="images/1.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p>Location: Unknown(City name)</p>
+                            <p>Price: Unknown</p>
+                            <p><a link="#">View More.</a></p>
+                        </div>
+                      </div>
+                      
+                      <div class="card">
+                        <img class="card-img-top" src="images/1.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p>Location: Unknown(City name)</p>
+                            <p>Price: Unknown</p>
+                            <p><a link="#">View More.</a></p>
+                        </div>
+                      </div>
+                      
+                      <div class="card">
+                        <img class="card-img-top" src="images/1.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p>Location: Unknown(City name)</p>
+                            <p>Price: Unknown</p>
+                            <p><a link="#">View More.</a></p>
+                        </div>
+                      </div>
+                      
+                      <div class="card">
+                        <img class="card-img-top" src="images/1.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p>Location: Unknown(City name)</p>
+                            <p>Price: Unknown</p>
+                            <p><a link="#">View More.</a></p>
+                        </div>
+                      </div>
+
+                      
+                      <div class="card">
+                        <img class="card-img-top" src="images/1.png" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p>Location: Unknown(City name)</p>
+                            <p>Price: Unknown</p>
+                            <p><a link="#">View More.</a></p>
+                        </div>
+                      </div>
+                      <div> 
+                          <h2>For Icon</h2>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="aboutUs">
+                <h2 class="myH2">About us</h2>
+                <p class="myP">    
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum ratione facere animi impedit rem labore sint repellendus ipsa sapiente voluptatem aut excepturi quo itaque, ab earum cumque. Voluptatem beatae id inventore quod voluptate qui deserunt, quis placeat, tempora ex totam, dolore sequi harum eos voluptatibus animi labore officiis minus laboriosam
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum ratione facere animi impedit rem labore sint repellendus ipsa sapiente voluptatem aut excepturi quo itaque, ab earum cumque. Voluptatem beatae id inventore quod voluptate qui deserunt, quis placeat, tempora ex totam, dolore sequi harum eos voluptatibus animi labore officiis minus laboriosam
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum ratione facere animi impedit rem labore sint repellendus ipsa sapiente voluptatem aut excepturi quo itaque, ab earum cumque. Voluptatem beatae id inventore quod voluptate qui deserunt, quis placeat, tempora ex totam, dolore sequi harum eos voluptatibus animi labore officiis minus laboriosam
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum ratione facere animi impedit rem labore sint repellendus ipsa sapiente voluptatem aut excepturi quo itaque, ab earum cumque. Voluptatem beatae id inventore quod voluptate qui deserunt, quis placeat, tempora ex totam, dolore sequi harum eos voluptatibus animi labore officiis minus laboriosam
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum ratione facere animi impedit rem labore sint repellendus ipsa sapiente voluptatem aut excepturi quo itaque, ab earum cumque. Voluptatem beatae id inventore quod voluptate qui deserunt, quis placeat, tempora ex totam, dolore sequi harum eos voluptatibus animi labore officiis minus laboriosam
+                </p>
+            </div>
+
+
+
+
+            
+            <div style='display: block;background-color: rgb(164, 175, 174);height:auto;padding-bottom:40px;box-shadow: 0px 30px 40px grey ,30px 0 40px grey'>
+                <section class="perfectChoice">
+                        <div class="myH2"> What Makes Us The Preferred Choice</div>
+                            <div class= "container-fluid">    
+                            <div class="row"style="font-size:2rem">
+                                    <div class="col-12 col-sm-6 col-md-3">
+                                        <div class="text-center wrapper_box center-block">
+                                            <div style="margin-bottom: 30px;height:100px;">Image will come here</div>
+                                            <h3>Maximum Choices</h3>
+                                            <span>15 Lac</span> + &amp; counting. New properties <span>every hour</span> to help buyers find the right home</span>
+                                        </div>
+                                    </div>
+                
+                                    <div class="col-12 col-sm-6 col-md-3">
+                                        <div class="text-center wrapper_box center-block">
+                                            <div style="margin-bottom: 30px;height:100px;">Image will come here</div>
+                                            <h3>Buyers Trust Us</h3>
+                                            <span >12 million users</<span> visit us every month for their buying and renting needs</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-md-3">
+                                        <div class="text-center wrapper_box center-block">
+                                            <div style="margin-bottom: 30px;height:100px;">Image will come here</div>
+                                            <h3>Seller Prefer Us</h3>
+                                            <<span>27,000 new properties</<span> posted daily, making us the biggest platform to sell &amp; rent properties</span>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6 col-md-3">
+                                        <div class="text-center wrapper_box center-block">
+                                            <div style="margin-bottom: 30px;height:100px;">Image will come here</div>
+
+                                            <h3>Expert Guidance</h3>
+                                            <span >Advice from the largest panel of <span>industry experts</span> to help you make smart property decisions</span>
+                                        </div>
+                                    </div>
+                                </div>>
+                        
+                            </div>
+                    
+                </section>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+            <div class="area-content"style="overflow:hidden">
+                <h2 class="myH2">Get insights about the area you are in</h2>
+                <p class="myP">    
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum ratione facere animi impedit rem labore sint repellendus ipsa sapiente voluptatem aut excepturi quo itaque, ab earum cumque. Voluptatem beatae id inventore quod voluptate qui deserunt, quis placeat, tempora ex totam, dolore sequi harum eos voluptatibus animi labore officiis minus laboriosam
+                </p>
+                <ol style="font-size:3rem;"> 
+                    <li>Maps showing some hospitals and everything near your current location</li>
+                    <li>Average prices persquare feet for every sublocation in the city/Town.</li>
+                    <li>Something which we can think of in the later period.</li>
+                </ul>
+
+            </div>
+          
+
+
+
+
+            <!-- this is for the site footer -->
+
+
+            <footer class="site-footer">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                      <h6>About SmartBricks</h6>
+                      <p class="text-justify">smartBricksand lorem ipson Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum ratione facere animi impedit rem labore sint repellendus ipsa sapiente voluptatem aut excepturi quo itaque, ab earum cumque. Voluptatem beatae id inventore quod voluptate qui deserunt, quis placeat, tempora ex totam, dolore sequi harum eos voluptatibus animi labore officiis minus laboriosam
+                        </p>
+                    </div>
+          
+                    <div class="col-xs-6 col-md-3">
+                      <h6>Categories</h6>
+                      <ul class="footer-links">
+                        <li><a href="#">Buy</a></li>
+                        <li><a href="#">Sell</a></li>
+                        <li><a href="#">Rent</a></li>
+                        <li><a href="#">Services</a></li>
+                    </ul>
+                    </div>
+          
+                    <div class="col-xs-6 col-md-3">
+                      <h6>Quick Links</h6>
+                      <ul class="footer-links">
+                        <li><a href="">About Us</a></li>
+                        <li><a href="">Contact Us</a></li>
+                        <li><a href="">Contribute</a></li>
+                        <li><a href=""">Privacy Policy</a></li>
+                        <li><a href="">Sitemap</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <hr>
+                </div>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-8 col-sm-6 col-xs-12">
+                      <p class="copyright-text">Copyright &copy; 2019 All Rights Reserved by 
+                   <a href="#">SmartBricks</a>.
+                      </p>
+                    </div>
+          
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                      <ul class="social-icons">
+                        <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+                        <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>   
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+          </footer>
+
+
+            
+        </div>   
+
+
+    <!-- Jquery needed -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script>
+            let count=0;
+            $('.navTrigger').click(function () {
+               if(count===0)
+               {
+                   openNav();
+                   count= count+1;
+               }
+               else
+               {
+                   closeNav();
+                   count=0;
+               }
+            })
+        </script>
+
+
+        <script>
+        function openNav() 
+        {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+        function closeNav() 
+        {
+                    document.getElementById("mySidenav").style.width = "0";
+        }
+                
+</script>
+    <!-- Function used to shrink nav bar removing paddings and adding black background -->
+        <script>
+
+            
+            $(window).scroll(function() {
+                if ($(document).scrollTop() > 50) {
+                    $('.nav').addClass('affix');
+                    console.log("OK");
+                } else {
+                    $('.nav').removeClass('affix');
+                }
+            });
+        </script>
+
+        </body>
+</html>
+
