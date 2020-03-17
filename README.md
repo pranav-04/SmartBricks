@@ -1,5 +1,5 @@
-# Trail 3:SmartBricks
-## Download trail 3. Also, download ***entire folder*** called ***bower_components*** from the path: ***``trial 1>public``*** and paste this entire folder in ***``trail2>public``*** 
+# Trial 4:SmartBricks
+## Download trial 4. Also, download ***entire folder*** called ***bower_components*** from the path: ***``trial 1>public``*** and paste this entire folder in ***``trial 4>public``*** 
 ## Procedure
 1) Download nodejs and install that software
 	link : [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
@@ -23,7 +23,7 @@
 9) Open VS Code and press 
 <kbd>Ctrl +`</kbd>
 10) Open folder **trail2** which you have downloaded from here.
-11) Also, download ***entire folder*** called ***bower_components*** from the path: ***``trial 1>public``*** and paste this entire folder in ***``trail2>public``***
+11) Also, download ***entire folder*** called ***bower_components*** from the path: ***``trial 1>public``*** and paste this entire folder in ***``trial 4>public``***
 11) ***``npm install``***
 12) ***``npm install -g nodemon``***
 13) ***``npm run dev``***
@@ -32,8 +32,8 @@
 
 ## Remaining Work
 
-1) Propery Page : When user click on the property then the next page should contain its all details including images.
-2) My Properties : which shows seller about his or her unsold properties. This page contains edit,delete and request verification of particular property. Though all three functionalities are successfully implemented, we just need my property page to display all these.
-3) Statistic Page - Frontend and backend
-4) Advanced filter/ search bar
+1) Propery Page : When user click on the property then the next page should contain its all details including images,location on map.
+2) Statistic Page - Frontend and backend
+3) Advanced filter/ search bar
+4) Chatbox
 5) Other tools like EMI calculator, price estimator etc.., if time permits.
