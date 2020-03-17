@@ -22,7 +22,7 @@
 8) Type ***`>use trial2`*** on command line.
 9) Open VS Code and press 
 <kbd>Ctrl +`</kbd>
-10) Open folder **trail2** which you have downloaded from here.
+10) Open folder **trial 4** which you have downloaded from here.
 11) Also, download ***entire folder*** called ***bower_components*** from the path: ***``trial 1>public``*** and paste this entire folder in ***``trial 4>public``***
 11) ***``npm install``***
 12) ***``npm install -g nodemon``***
