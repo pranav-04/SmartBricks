@@ -1,0 +1,108 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  title SmartBricks
+  script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js' integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n' crossorigin='anonymous')
+  script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js' integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo' crossorigin='anonymous')
+  link(href='/css/Navbar/navbar.css' rel='stylesheet' type='text/css')
+  block head 
+
+  body
+    div
+      #mySidenav.sidenav
+        ul
+          li
+            a(href='/') Buy
+          if !user
+            li
+              a(href='/users/login') Sell
+          else  
+            li 
+              a(href='/property/sell') Sell
+          li
+            a(href='/') Statistic
+          li
+            a(href='/') Filter
+          if !user
+            li
+              a(href='/users/register') SignUp
+            li
+              a(href='/users/login') Login
+          else 
+            li 
+              a(href='/users/my_property') My Property
+            li    
+              a(href='/users/logput') Logout
+      nav.nav
+        .container1
+          .logo(style='float:left')
+            a(href='/') SmartBricks
+          #mainListDiv.main_list(style='float:right')
+            ul.navlinks
+              li
+                a(href='/') Buy
+              if !user
+                li
+                  a(href='/users/login') Sell
+              else
+                li 
+                  a(href='/property/sell') Sell
+              li
+                a(href='/') Statistic
+              li
+                a(href='/') Filter
+              if !user
+                li
+                  a(href='/users/register') SignUp
+                li
+                  a(href='/users/login') Login
+              else  
+                li
+                  a(href='/users/my_property') My property
+                .dropdown
+                  button.dropbtn
+                    | Settings 
+                    i.zmdi.zmdi-caret-down
+                  .dropdown-content
+                    a(href='#') My Profile
+                    a(href='#') History
+                    a(href='/users/logout') Logout
+          span.navTrigger
+            i
+            i
+            i
+    block content        
+    script(src='/js/main.js')
+    //- script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+    script.
+      let count=0;
+      $('.navTrigger').click(function () {
+      if(count===0)
+      {
+      openNav();
+      count= count+1;
+      }
+      else
+      {
+      closeNav();
+      count=0;
+      }
+      })
+    script.
+      function openNav()
+      {
+      document.getElementById("mySidenav").style.width = "250px";
+      }
+      function closeNav()
+      {
+      document.getElementById("mySidenav").style.width = "0";
+      }
+    script.
+      $(window).scroll(function() {
+      if ($(document).scrollTop() > 50) {
+      $('.nav').addClass('affix');
+      console.log("OK");
+      } else {
+      $('.nav').removeClass('affix');
+      }
+      });

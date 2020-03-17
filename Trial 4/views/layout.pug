@@ -1,0 +1,52 @@
+doctype html
+html
+    head
+        title SmartBrick.com
+        link(rel = 'stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
+        link(rel = 'stylesheet' href='/css/style.css')
+    body
+        nav.navbar.navbar-inverse
+            .container
+                .navbar-header
+                button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+                    span.sr-only Toggle navigation
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                a.navbar-brand(href='/') SmartBrick
+                #navbar.collapse.navbar-collapse
+                    ul.nav.navbar-nav
+                        if user
+                            li
+                                a(href='/property/sell') Post Property
+                            li 
+                                a(href='/') Buy
+                        else
+                            li
+                                a(href='/') Buy
+                            li
+                                a(href='/') Get Statistic
+                    ul.nav.navbar-nav.navbar-right
+                        if user
+                            li 
+                                a(href='/users/my_property') My Properties
+                            li 
+                                a(href='/users/logout') Logout
+                        else
+                            li
+                                a(href='/users/register') Sign Up
+                            li
+                                a(href='/users/login') Login
+        .container
+            != messages('message',locals)
+            if errors
+                each error,i in errors
+                    div(class="alert alert-danger") #{error.msg}
+            block content
+            br
+            hr
+            footer
+                p Sen Group 21 : Trial 1    
+        script(src='/bower_components/jquery/dist/jquery.js')  
+        script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
+        script(src='/js/main.js') 
