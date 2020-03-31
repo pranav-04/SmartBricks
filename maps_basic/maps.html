@@ -60,6 +60,10 @@
 		    
 		};
 		L.control.layers(baseLayers,overlayMaps).addTo(mymap);
+		
+		//When you click on the map at a certain location, it logs the coordinates in the console.
+		function onClick(e) {console.log(e.latlng);}
+		mymap.on('click', onClick);
   	</script>
     
   </body>
