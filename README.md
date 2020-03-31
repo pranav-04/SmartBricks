@@ -1,5 +1,4 @@
 # Trial 4:SmartBricks
-## Download trial 4. Also, download ***entire folder*** called ***bower_components*** from the path: ***``trial 1>public``*** and paste this entire folder in ***``trial 4>public``*** 
 ## Procedure
 1) Download nodejs and install that software
 	link : [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
@@ -23,17 +22,14 @@
 9) Open VS Code and press 
 <kbd>Ctrl +`</kbd>
 10) Open folder **trial 4** which you have downloaded from here.
-11) Also, download ***entire folder*** called ***bower_components*** from the path: ***``trial 1>public``*** and paste this entire folder in ***``trial 4>public``***
 11) ***``npm install``***
-12) ***``npm install -g nodemon``***
-13) ***``npm run dev``***
-14) Open Chrome browser and type ***``http://localhost:5000``*** 
+12) ***``npm run dev``***
+13) Open Chrome browser and type ***``http://localhost:5000``*** 
 
 
 ## Remaining Work
 
-1) Propery Page : When user click on the property then the next page should contain its all details including images,location on map.
+1) Google maps API link is remaining
 2) Statistic Page - Frontend and backend
 3) Advanced filter/ search bar
-4) Chatbox
-5) Other tools like EMI calculator, price estimator etc.., if time permits.
+4) Other tools Price estimator etc.., if time permits.
