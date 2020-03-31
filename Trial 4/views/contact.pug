@@ -1,0 +1,97 @@
+doctype html
+head
+  title SmartBricks - Contact Us
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  link(rel='stylesheet' type='text/css' href='/vendor/Contact_Us/bootstrap/css/bootstrap.min.css')
+  link(rel='stylesheet' type='text/css' href='/fonts/font-awesome-4.7.0/css/font-awesome.min.css')
+  link(rel='stylesheet' type='text/css' href='/fonts/Linearicons-Free-v1.0.0/icon-font.min.css')
+  link(rel='stylesheet' type='text/css' href='/vendor/Contact_Us/animate/animate.css')
+  link(rel='stylesheet' type='text/css' href='/vendor/Contact_Us/css-hamburgers/hamburgers.min.css')
+  link(rel='stylesheet' type='text/css' href='/vendor/Contact_Us/animsition/css/animsition.min.css')
+  link(rel='stylesheet' type='text/css' href='/vendor/Contact_Us/select2/select2.min.css')
+  link(rel='stylesheet' type='text/css' href='/vendor/Contact_Us/daterangepicker/daterangepicker.css')
+  link(rel='stylesheet' type='text/css' href='/css/Contact_Us/util.css')
+  link(rel='stylesheet' type='text/css' href='/css/Contact_Us/main.css')
+body
+  .container-contact100
+    .wrap-contact100
+      form.contact100-form.validate-form(method='POST' action='/contactus')
+        span.contact100-form-title
+          | Send Us A Message
+        label.label-input100(for='name') Tell us your full name *
+        .wrap-input100.validate-input(data-validate='Type full name')
+          input#name.input100(type='text' name='name' placeholder='Full name')
+          span.focus-input100
+        label.label-input100(for='email') Enter your email *
+        .wrap-input100.validate-input(data-validate='Valid email is required: ex@abc.xyz')
+          input#email.input100(type='text' name='email' placeholder='Eg. example@email.com')
+          span.focus-input100
+        label.label-input100(for='phone') Enter phone number
+        .wrap-input100
+          input#phone.input100(type='text' name='phone' placeholder='Eg. +1 800 000000')
+          span.focus-input100
+        label.label-input100(for='message') Message *
+        .wrap-input100.validate-input(data-validate='Message is required')
+          textarea#message.input100(name='message' placeholder='Write us a message')
+          span.focus-input100
+        .container-contact100-form-btn
+          input.btn.btn-primary(type='submit',value = 'Send')
+      .contact100-more.flex-col-c-m(style="background-image: url('images/bg-01.jpg');")
+        .dis-flex.size1.p-b-47
+          .txt1.p-r-25
+            span.lnr.lnr-user
+          .flex-col.size2
+            span.txt1.p-b-20
+              | Our Team
+            span.txt3
+              | Purvil Mehta | Pranav Jasoliya |
+              | Darshan Patel | Darshit Patel | Meet Raval |
+              | Meher Chinwala | Jash Vithlani | Saumya Shah | Megh Shah |
+              | Rahul Purohit | Herin Jani | Kashyap Daxini | Harsh Chhatbar
+        .dis-flex.size1.p-b-47
+          .txt1.p-r-25
+            span.lnr.lnr-map-marker
+          .flex-col.size2
+            span.txt1.p-b-20
+              | Address
+            span.txt3
+              | Dhirubhai Ambani Institute of Information and Communication Technology, Gandhinagar, Gujarat
+        .dis-flex.size1.p-b-47
+          .txt1.p-r-25
+            span.lnr.lnr-phone-handset
+          .flex-col.size2
+            span.txt1.p-b-20
+              | Lets Talk
+            span.txt3
+              | +91 96625XXXX4
+        .dis-flex.size1.p-b-47
+          .txt1.p-r-25
+            span.lnr.lnr-envelope
+          .flex-col.size2
+            span.txt1.p-b-20
+              | General Support
+            span.txt3
+              | sengroup21@gamil.com
+  #dropDownSelect1
+  script(src='vendor/jquery/jquery-3.2.1.min.js')
+  script(src='vendor/animsition/js/animsition.min.js')
+  script(src='vendor/bootstrap/js/popper.js')
+  script(src='vendor/bootstrap/js/bootstrap.min.js')
+  script(src='vendor/select2/select2.min.js')
+  script.
+    $(".selection-2").select2({
+    minimumResultsForSearch: 20,
+    dropdownParent: $('#dropDownSelect1')
+    });
+  script(src='vendor/daterangepicker/moment.min.js')
+  script(src='vendor/daterangepicker/daterangepicker.js')
+  script(src='vendor/countdowntime/countdowntime.js')
+  script(src='js/main.js')
+  // Global site tag (gtag.js) - Google Analytics
+  script(async='' src='https://www.googletagmanager.com/gtag/js?id=UA-23581568-13')
+  script.
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-23581568-13');
