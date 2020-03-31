@@ -1,4 +1,5 @@
 const express = require('express')
+const app = express();
 const path = require('path')
 const router = express.Router();
 let Property = require('../models/property')
@@ -6,8 +7,16 @@ let User = require('../models/user');
 let Verification = require('../models/verification');
 const multer = require('multer');
 const uuid = require('uuid');
+const Swal = require('sweetalert')
 const random = uuid.v4();
-//const upload = multer({dest:'./uploads'})
+const socket = require('socket.io');
+const http = require('http');
+// Socket.io integration with express
+const server = http.createServer(app);
+
+// Creating the socket
+const io = socket(server);
+
 const storage = multer.diskStorage({
     destination: function(req,file,cb){
         cb(null,'./public/uploads');
@@ -45,8 +54,8 @@ router.get('/:id',(req,res) =>{
         if(err){
             console.log(err)
         }else{
-            res.render('property',{
-                property:property
+            res.render('property2',{
+                property:property,
             })
         }
     })
@@ -149,7 +158,43 @@ router.post('/request/:id',(req,res) =>{
     })
 })
 
+//For chat
+io.on('connection', (socket) => {
 
+    Chat.find({}, (err, chats) => {
+        if(err) console.log(err);
+        else{
+            socket.emit('output', chats);
+        }
+    });
+  
+    //Handle input events
+    socket.on('input', (data) => {
+        let from= data.from;
+        let to = data.to;
+        let body = data.body;
+  
+        //Check for name and message
+        if(body != ''){
+            //insert message 
+            let newChat = new Chat({from: from, to: to, body: body});
+            newChat.save((err) => {
+                if(err) console.log(err);
+                else
+                io.emit('output', [data]);
+            });
+        }
+    });
+  
+    //Handle clear
+    socket.on('clear', (data) => {
+        //Remove all chats from the connection
+        Chat.remove({}, () => {
+            //Emit cleared
+            io.emit('cleared');
+        });
+    });
+  });
 router.post('/edit/:id',(req,res) =>{
 
     req.checkBody('name','Name is required').notEmpty();
@@ -260,7 +305,7 @@ router.post('/edit/:id',(req,res) =>{
         if(err){
             console.log(err)
         }else{
-            req.flash('success','Property Updated!')
+            req.flash('success','Property Updated!');
             res.redirect('/users/my_property');
         }
         })
