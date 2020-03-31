@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<style type="text/css">
+  		#mapid { height: 600px;
+  				width:60%; }
+  	</style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+   crossorigin=""/>
+   <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+   crossorigin=""></script>
+  </head>
+  <body>
+  	<div id="mapid"></div>
+  	<script type="text/javascript">
+  		var LeafIcon = L.Icon.extend({
+		    options: {
+		        iconSize:     [32, 32], // size of the icon
+	    		iconAnchor:   [20, 24], // point of the icon which will correspond to marker's location
+		    }
+		});
+
+  		var foodicon = new LeafIcon({iconUrl: 'food.png'}),
+  			schoolicon = new LeafIcon({iconUrl: 'school.png'}),
+  			hospicon = new LeafIcon({iconUrl: 'hospital.png'});
+  		var mymap = L.map('mapid').setView([23.18853, 72.62896], 9, food);
+  		var marker = L.marker([23.18853, 72.62896]).addTo(mymap);
+  		var food_1 = L.marker([23.11, 72.02], {icon: foodicon}).bindPopup('This is Food 1'),
+		    food_2 = L.marker([23.14, 72.99], {icon: foodicon}).bindPopup('This is Food 2'),
+		    food_3 = L.marker([23.33, 72.8], {icon: foodicon}).bindPopup('This is Food 3'),
+		    food_4 = L.marker([23.27, 72.23], {icon: foodicon}).bindPopup('This is Food 4'),
+		    s1 = L.marker([23.09, 72.52], {icon: schoolicon}).bindPopup('This is school 1'),
+		    s4 = L.marker([23.24, 72.99], {icon: schoolicon}).bindPopup('This is school 2'),
+		    s3 = L.marker([23.35, 72.77], {icon: schoolicon}).bindPopup('This is school 3'),
+		    s2 = L.marker([23.19, 72.53], {icon: schoolicon}).bindPopup('This is school 4'),
+		    h1 = L.marker([23.09, 72.46], {icon: hospicon}).bindPopup('This is clinic 1'),
+		    h4 = L.marker([23.14, 72.10], {icon: hospicon}).bindPopup('This is clinic 2'),
+		    h3 = L.marker([23.45, 72.70], {icon: hospicon}).bindPopup('This is clinic 3'),
+		    h2 = L.marker([23.29, 72.14], {icon: hospicon}).bindPopup('This is clinic 4');
+		var food = L.layerGroup([food_1, food_2, food_3, food_4]);
+		var school = L.layerGroup([s1, s2, s3, s4]);
+		var hospital = L.layerGroup([h1, h2, h3, h4]);
+
+  		L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+		maxZoom: 18,
+		id: 'mapbox/streets-v11',
+		tileSize: 512,
+		zoomOffset: -1,
+		accessToken: 'pk.eyJ1IjoibWVoZXJxd2VydHkiLCJhIjoiY2s4ZXllOWo3MDFneDNrb3hwZXQza2UwOCJ9.-T5G4YLq1isrFIi4aY89ew'
+		}).addTo(mymap);
+  		var overlayMaps = {
+		    "Food": food,
+		    "Schools": school, 
+		    "Hospitals":hospital
+		};
+		var baseLayers = {
+		    
+		};
+		L.control.layers(baseLayers,overlayMaps).addTo(mymap);
+  	</script>
+    
+  </body>
+</html>
+
