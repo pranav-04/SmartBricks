@@ -1,0 +1,160 @@
+@font-face {
+  font-family: "Poppins-Regular";
+  src: url("../../fonts/poppins/Poppins-Regular.ttf"); }
+@font-face {
+  font-family: "Poppins-SemiBold";
+  src: url("../../fonts/poppins/Poppins-SemiBold.ttf"); }
+#chat{
+  margin-top: 20px;
+  width:35%;
+  margin: auto;
+}
+body{
+  font-family: Poppins-Regular;
+}
+.container{
+  padding-top: 90px;
+  height: 90vh;
+}
+.header{
+  height: 60px;
+  background-color: #3b5998;
+  color: #ffffff;
+  margin-top: 10px;
+  border-radius: 10px 10px 0px 0px;
+}
+.img{
+  background: url('../../images/41430066.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  align-items: center; 
+}
+#enterMssg{
+  height: 40px;
+  border-radius: 0px 0px 10px 10px;
+}
+.card{
+  border-radius: 0px 0px 10px 10px;
+}
+.img2{
+  background: url('../../images/12.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  align-items: center; 
+}
+.img2 li{
+  width: 40%;
+  left: 0;
+  margin: 10px;
+  border-radius: 5px;
+  color: black;
+  text-decoration: none;
+}
+.img2 li a{
+  font-family: Poppins-SemiBold;
+  font-size: 20px;
+  color: black;
+}
+.header h6{
+  display: inline;
+  position: relative;
+  left: 5%;
+  font-size: 20px;
+}
+
+.header img{
+  height: 60px;
+  position: relative;
+  top: -35%;
+  left: 3%; 
+}
+
+#messages{
+    height: 300px;
+    overflow-y: scroll;
+    background-image: url('/images/background2.jpg');
+    border-radius: 0px 0px 0px 0px;
+    white-space: pre-line;
+}
+
+#messages textarea{
+  margin: 10px;
+  position: absolute;
+  bottom: 25px;
+  width: 33%;
+  height: 40px;
+  border-radius: 15px 15px 15px 15px;
+}
+
+.you-message{
+  float: right;
+  clear: both;
+  margin: 0px 10px 5px 10px;
+  border-radius: 9px;
+  font-size: 15px;
+  padding: 0px 10px;
+  margin-top: 5px;
+  background-color: dodgerblue;
+  color: #ffffff;
+  max-width: 250px;
+}
+
+.opp-message{
+  float: left;
+  clear: both;
+  margin: 0px 10px 5px 10px;
+  background-color: #d3d3d3;
+  border-radius: 9px;
+  font-size: 15px;
+  padding: 0px 10px;
+  max-width: 250px;
+}
+
+.menu{
+  display: inline;
+  position: absolute;
+  right:30px;
+  top: 30px;
+  cursor: pointer;
+}
+
+.menu img{
+  height: 25px;
+}
+
+.sub-menu{
+  display: none;
+  background-color: #d3d3d3;
+  border-radius: 10px;
+}
+
+.sub-menu ul{
+  list-style: none;
+  display: flex;
+}
+
+.sub-menu ul li{
+  font-size: 15px;
+  color: black;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.menu:hover .sub-menu{
+  display: block;
+  position: absolute;
+  z-index: 10;
+}
+
+.menu:hover .sub-menu ul{
+  display: block;
+  margin: 10px;
+}
+
+.sub-menu ul li:hover{
+  color: white;
+  background-color: black;
+}
+
