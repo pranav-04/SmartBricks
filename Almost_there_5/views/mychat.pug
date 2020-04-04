@@ -1,0 +1,14 @@
+extends layout2
+
+append head
+  link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
+  link(rel='stylesheet' href='/css/style.css')
+
+block content
+  .img2
+    .container
+      ul.list-group
+        each user,i in users
+          if user.username != req_user
+            li.list-group-item
+              a(href="/chat/"+user._id)= user.name

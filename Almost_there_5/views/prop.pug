@@ -1,0 +1,57 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  title Side Navigation Bar
+  link(rel='stylesheet' href='/css/Property/styles.css')
+  link(rel='stylesheet' href='/css/Property/property.css')
+  script(src='https://kit.fontawesome.com/b99e675b6e.js')
+body
+  .wrapper
+    .sidebar
+      h2 SmartBricks
+      ul
+        li
+          a(href='#')
+            i.fas.fa-home
+            | Home
+        li
+          a(href='#')
+            i.fas.fa-user
+            | Profile
+        li
+          a(href='#')
+            i.fas.fa-address-card
+            | About
+        li
+          a(href='#')
+            i.fas.fa-project-diagram
+            | portfolio
+        li
+          a(href='#')
+            i.fas.fa-blog
+            | Blogs
+        li
+          a(href='#')
+            i.fas.fa-address-book
+            | Contact
+        li
+          a(href='#')
+            i.fas.fa-map-pin
+            | Map
+      .social_media
+        a(href='#')
+          i.fab.fa-facebook-f
+        a(href='#')
+          i.fab.fa-twitter
+        a(href='#')
+          i.fab.fa-instagram
+    .main_content
+      .img 
+        h1 #{property.Name}
+        h3 In #{property.Location} by #{property.Owner}
+        h2 #{property.BHK} BHK | ₹ #{property.Price}
+        a.btn.btn-white.btn-animation-1(href='#first') Explore More
+        if !user
+          a.btn.btn-white.btn-animation-1(href='/users/login') Contact Owner
+        else  
+          a.btn.btn-white.btn-animation-1(href='#') Contact Owner

@@ -1,0 +1,178 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  title SmartBricks
+  script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js' integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n' crossorigin='anonymous')
+  script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js' integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo' crossorigin='anonymous')
+  link(rel="stylesheet" href="/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css")  
+  link(href='/css/Navbar/navbar.css' rel='stylesheet' type='text/css')
+  //- link(href='/css/menuBar.css' rel='stylesheet' type='text/css')
+  link(rel = 'stylesheet' href='/css/My_Property/style_my_properties.css')
+  link#bootstrap-css(href='//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css' rel='stylesheet')
+  script(src='//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js')
+  script(src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+  script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js' integrity='sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6' crossorigin='anonymous')
+  script(src="https://unpkg.com/sweetalert/dist/sweetalert.min.js")
+  body
+    div
+      #mySidenav.sidenav
+        ul
+          li
+            a(href='/') Buy
+          if !user
+            li
+              a(href='/users/login') Sell
+          else  
+            li 
+              a(href='/property/sell') Sell
+          li
+            a(href='/') Statistic
+          li
+            a(href='/') Filter
+          if !user
+            li
+              a(href='/users/register') SignUp
+            li
+              a(href='/users/login') Login
+          else 
+            li 
+              a(href='/users/my_property') Properties
+            li
+              a(href='#') My Profile
+            li
+              a(href='#') History
+            li    
+              a(href='/users/logput') Logout
+      nav.nav
+        .container1
+          .logo(style='float:left')
+            a(href='/') SmartBricks
+          #mainListDiv.main_list(style='float:right')
+            ul.navlinks
+              li
+                a(href='/') Buy
+              if !user
+                li
+                  a(href='/users/login') Sell
+              else
+                li 
+                  a(href='/property/sell') Sell
+              li
+                a(href='/') Statistic
+              li
+                a(href='/') Filter
+              if !user
+                li
+                  a(href='/users/register') SignUp
+                li
+                  a(href='/users/login') Login
+              else  
+                li
+                  a(href='/users/my_property') My property
+                .dropdown
+                  button.dropbtn
+                    | Settings 
+                    i.zmdi.zmdi-caret-down
+                  .dropdown-content
+                    a(href='#') My Profile
+                    a(href='#') History
+                    a(href='/users/logout') Logout
+          span.navTrigger
+            i
+            i
+            i
+    .container.py-3
+      != messages('message',locals)
+      - let cnt = 0
+      each property,j in properties
+        if property.ownerid == id
+          - cnt = cnt + 1
+      if cnt<=1
+        h1 #{cnt} property found
+      else  
+        h1 #{cnt} properties found
+      hr
+      each property,j in properties
+        if property.ownerid == id
+          .card-group.vgr-cards
+            .card
+              .card-img-body
+                #CarouselTest.carousel.slide( data-ride='carousel')
+                  .carousel-inner
+                    .carousel-item.active
+                      img.d-block(style='width:100%' src='/uploads/'+property.images[0] alt='')
+                    each image,i in property.images
+                      if i!=0
+                        .carousel-item
+                          img.d-block(style='width:100%' src='/uploads/'+image alt='')
+                    a.carousel-control-prev(href='#CarouselTest' role='button' data-slide='prev')
+                      span.carousel-control-prev-icon(aria-hidden='true')
+                      span.sr-only Previous
+                    a.carousel-control-next(href='#CarouselTest' role='button' data-slide='next')
+                      span.carousel-control-next-icon(aria-hidden='true')
+                      span.sr-only Next
+              .card-body
+                if property.verified == true
+                  h4.card-title #{property.Name}
+                  h4.i.zmdi.zmdi-badge-check(style='font-size:25px;color:green')
+                else if property.req_verified == true
+                  h4.card-title #{property.Name}
+                  h4.i.zmdi.zmdi-calendar-alt(style = 'font-size:25px;color:blue')
+                  each verification,k in verifications
+                    if verification.propertyid == property._id
+                      if verification.ownerid == id
+                        - let l = 'AM' 
+                        if verification.time<6
+                          -l = 'PM'
+                        else  
+                          -l = 'AM'
+                        h3.card-title Appointment Booked : #{verification.date} #{verification.time} #{l}
+                else
+                  h4.card-title #{property.Name}
+                p.card-text
+                  | #{property.Description}
+                p.card-text2
+                  | Price : #{property.Price}
+                if property.verified == false
+                  if property.req_verified == false
+                    a.btn.btn-primary2(href='/property/request/'+property._id) Request Verification
+                a.btn.btn-primary(href='/property/'+property._id) Read More
+                a.btn.btn-primary(href='/property/edit/'+property._id) Edit
+                a.btn.btn-danger.delete-property(href='#', data-id=property._id ) Delete 
+
+    script(src='/js/main.js')
+    //- script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+    script.
+      let count=0;
+      $('.navTrigger').click(function () {
+      if(count===0)
+      {
+      openNav();
+      count= count+1;
+      }
+      else
+      {
+      closeNav();
+      count=0;
+      }
+      })
+    script.
+      function openNav()
+      {
+      document.getElementById("mySidenav").style.width = "250px";
+      }
+      function closeNav()
+      {
+      document.getElementById("mySidenav").style.width = "0";
+      }
+    script.
+      $(window).scroll(function() {
+      if ($(document).scrollTop() > 50) {
+      $('.nav').addClass('affix');
+      console.log("OK");
+      } else {
+      $('.nav').removeClass('affix');
+      }
+      });
+
+  //- link(rel = 'stylesheet' href='/css/list.css')

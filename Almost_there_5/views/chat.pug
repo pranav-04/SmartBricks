@@ -1,0 +1,89 @@
+extends layout2
+
+append head 
+  link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
+  link(rel='stylesheet' href='/css/style.css')
+
+block content
+  .img
+    .container
+      //- .row
+      //-   .col-md-4.offset-md-4.col-sm-12
+      #chat
+        .header
+          img(src='/images/user.png')
+          h6 #{cwun}
+          .menu
+            .sub-menu
+        .chat-body
+          .card
+            #messages.card-block
+            textarea#enterMssg.form-control(placeholder='Enter message...')
+
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js')
+  script(type='text/javascript').
+    (function(){
+    var element = (id) => {
+    return document.getElementById(id);
+    }
+    //get elements
+    var messages = element('messages');
+    var textarea = element('enterMssg');
+    var clear = element('clear');
+
+    //connect to socket.io
+    var socket = io.connect('http://127.0.0.1:5000');
+    //check for connection
+    if(socket !== undefined){
+      console.log('connected to socket...');
+      socket.on('output', (data) => {
+          console.log('output');
+          const liuid = "#{liuid}";
+          const cwid = "#{cwid}";
+          const liun = "#{liun}";
+          const cwun = "#{cwun}";
+          if(data.length){
+              for(var x=0; x < data.length; x++){
+                  if( (data[x].from == liuid && data[x].to == cwid) || (data[x].to == liuid && data[x].from == cwid) ){
+                    //build out message div
+                    var message = document.createElement('div');
+                    if(data[x].from == liuid)
+                      message.setAttribute('class', 'you-message');
+                    else
+                      message.setAttribute('class', 'opp-message');
+                    message.textContent = data[x].body;
+                    //messages.appendChild(message);
+                    messages.append(message);
+                    messages.scrollTop = messages.scrollHeight - messages.clientHeight;
+                }
+              }
+          }
+      });
+
+      //Handle input
+      textarea.addEventListener('keydown', (event) => {
+          const liuid = "#{liuid}";
+          const cwid = "#{cwid}";
+          if(event.which === 13 && event.shiftKey == false){
+              console.log('Enter');
+              //Emit input to server
+              socket.emit('input', {
+                  from: liuid,
+                  to: cwid,
+                  body: textarea.value
+              });
+              textarea.value='';
+              event.preventDefault();
+          }
+      });
+
+      //Handle clear
+      clear.addEventListener('click', () => {
+          socket.emit('clear');
+      });
+      //Clear Message
+      socket.on('cleared', () => {
+          messages.textContent = '';
+      });
+    }
+    })();

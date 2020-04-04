@@ -1,0 +1,273 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  title SmartBricks
+  // Bootstrap css and java scripts
+  link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh' crossorigin='anonymous')
+  link(rel="stylesheet" href="/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css")
+  script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js' integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n' crossorigin='anonymous')
+  script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js' integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo' crossorigin='anonymous')
+  script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js' integrity='sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6' crossorigin='anonymous')
+  // end of bootstrap  links
+  link(href='/css/Main_Page/titlebar.css' rel='stylesheet' type='text/css')
+  link(href='/css/Navbar/navbar.css' rel='stylesheet' type='text/css')
+  link(href='/css/Main_Page/footer1.css' rel='stylesheet' type='text/css')
+  //- link(href='/css/menuBar.css' rel='stylesheet' type='text/css')
+  link(href='/css/Main_Page/main_page_1.css' rel='stylesheet' type='text/css')
+  block head 
+  
+  body
+    div
+      #mySidenav.sidenav
+        ul
+          li
+            a(href='/') Buy
+          if !user
+            li
+              a(href='/users/login') Sell
+          else
+            li
+              a(href='/property/sell') Sell
+          li
+            a(href='/') Statistic
+          li
+            a(href='/') Filter
+          if !user
+            li
+              a(href='/users/register') SignUp
+            li
+              a(href='/users/login') Login
+          else
+            li 
+              a(href='/users/my_property') Properties
+            li
+              a(href='#') My Chat
+            li
+              a(href='#') My Profile
+            li
+              a(href='#') History
+            li
+              a(href='/users/logout') Logout
+      nav.nav
+        .container1
+          .logo(style='float:left')
+            a(href='#') SmartBricks
+          #mainListDiv.main_list(style='float:right')
+            ul.navlinks
+              //- if user
+              //-   li 
+              //-     a(href='/') #{user.name}
+              li
+                a(href='/') Buy
+              if !user
+                li
+                  a(href='/users/login') Sell
+              else
+                li
+                  a(href='/property/sell') Sell
+              li
+                a(href='/') Statistic
+              li
+                a(href='/') Filter
+              if !user
+                li
+                  a(href='/users/register') SignUp
+                li
+                  a(href='/users/login') Login
+              else
+                li 
+                  a(href='/users/my_property') My Property
+                .dropdown
+                  button.dropbtn
+                    | Settings 
+                    i.zmdi.zmdi-caret-down
+                  .dropdown-content
+                    a(href='/users/mychat') My Chat
+                    a(href='#') My Profile
+                    a(href='#') History
+                    a(href='/users/logout') Logout
+          span.navTrigger
+            i
+            i
+            i
+            
+    div(style='height: auto')
+      .header
+        form(method='POST' action='/search')
+          h1.myH1 Find the perfect Property For you.
+          .form-box
+            input.search-field.business(name='location' type='text' placeholder='Location')
+            input.search-field.location(name='maxprice' type='text' placeholder='Maximum Price')
+            button.search-btn(type='submit') Search
+      #carouselExampleInterval.carousel.slide(data-ride='carousel' style='Overflow:hidden')
+        .carousel-inner
+          .carousel-item.active(data-interval='4000')
+            img.d-block.w-100(src='/images/12.jpeg' style='overflow:hidden' alt='...')
+          .carousel-item(data-interval='4000')
+            img.d-block.w-100(src='/images/10.jpg' style='overflow:hidden' alt='...')
+          .carousel-item(data-interval='4000')
+            img.d-block.w-100(src='/images/13.jpeg' style='overflow:hidden' alt='...')
+          .carousel-item(data-interval='4000')
+            img.d-block.w-100(src='/images/14.jpeg' style='overflow:hidden' alt='...')
+        a.carousel-control-prev(href='#carouselExampleInterval' role='button' data-slide='prev' style='opacity:0')
+          span.carousel-control-prev-icon(aria-hidden='true')
+        a.carousel-control-next(href='#carouselExampleInterval' role='button' data-slide='next' style='opacity:0')
+          span.carousel-control-next-icon(aria-hidden='true')
+
+    .display-content(style='overflow:hidden')
+      div(style='padding-top:40px;')
+        h2(style='padding-left:30px;padding-top:30px;padding-bottom:20px;font-size: 4rem;') Featured Items 
+      .scrolling-wrapper(style='overflow-x:scroll; overflow-y: hidden;white-space: nowrap;')
+        each property,i in properties
+          .card
+              img.card-img-top(src='/uploads/'+property.images[0] alt='Card image cap')
+              .card-body
+                h5.card-title #{property.Name}
+                p Location: #{property.Location}
+                p Price: #{property.Price}
+                p
+                a(href="/property/"+property._id) View More.
+        div
+          h2 For Icon
+
+  .aboutUs
+    h2.myH2#aboutUs About us
+    p.myP
+      | Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum ratione facere animi impedit rem labore sint repellendus ipsa sapiente voluptatem aut excepturi quo itaque, ab earum cumque. Voluptatem beatae id inventore quod voluptate qui deserunt, quis placeat, tempora ex totam, dolore sequi harum eos voluptatibus animi labore officiis minus laboriosam
+      | Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum ratione facere animi impedit rem labore sint repellendus ipsa sapiente voluptatem aut excepturi quo itaque, ab earum cumque. Voluptatem beatae id inventore quod voluptate qui deserunt, quis placeat, tempora ex totam, dolore sequi harum eos voluptatibus animi labore officiis minus laboriosam
+      | Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum ratione facere animi impedit rem labore sint repellendus ipsa sapiente voluptatem aut excepturi quo itaque, ab earum cumque. Voluptatem beatae id inventore quod voluptate qui deserunt, quis placeat, tempora ex totam, dolore sequi harum eos voluptatibus animi labore officiis minus laboriosam
+      | Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum ratione facere animi impedit rem labore sint repellendus ipsa sapiente voluptatem aut excepturi quo itaque, ab earum cumque. Voluptatem beatae id inventore quod voluptate qui deserunt, quis placeat, tempora ex totam, dolore sequi harum eos voluptatibus animi labore officiis minus laboriosam
+      | Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum ratione facere animi impedit rem labore sint repellendus ipsa sapiente voluptatem aut excepturi quo itaque, ab earum cumque. Voluptatem beatae id inventore quod voluptate qui deserunt, quis placeat, tempora ex totam, dolore sequi harum eos voluptatibus animi labore officiis minus laboriosam
+
+  div(style='display: block;background-color: rgb(164, 175, 174);height:auto;padding-bottom:40px;box-shadow: 0px 30px 40px grey ,30px 0 40px grey')
+    section.perfectChoice
+      .myH2  What Makes Us The Preferred Choice
+      .container-fluid
+        .row(style='font-size:2rem')
+          .col-12.col-sm-6.col-md-3
+            .text-center.wrapper_box.center-block
+              img(src='/images/customer.jpg' style='margin-bottom: 30px;height:100px;') 
+              h3 Maximum Choices
+              span 15 Lac
+              |  + &amp; counting. New properties 
+              span every hour
+              |  to help buyers find the right home
+          .col-12.col-sm-6.col-md-3
+            .text-center.wrapper_box.center-block
+              img(src='/images/trust.png' style='margin-bottom: 30px;height:100px;')
+              h3 Buyers Trust Us
+              span 100k users visit us every month for their buying and renting needs
+          .col-12.col-sm-6.col-md-3
+            .text-center.wrapper_box.center-block
+              img(src='/images/pref.jpg' style='margin-bottom: 30px;height:100px;')
+              h3 Seller Prefer Us
+              | 100+ new properties posted daily, making us the biggest platform to sell &amp; rent properties
+          .col-12.col-sm-6.col-md-3
+            .text-center.wrapper_box.center-block
+              img(src='/images/expert.png' style='margin-bottom: 30px;height:100px;')
+              h3 Expert Guidance
+              span
+                | Advice from the largest panel of 
+                span industry experts
+                |  to help you make smart property decisions
+
+    .area-content(style='overflow:hidden')
+      h2.myH2 Get insights about the area you are in
+      p.myP
+        | Maps showing some hospitals and everything near your current location.
+        | Average prices persquare feet for every sublocation in the city/Town.
+        | Something which we can think of in the later period.
+
+    footer.site-footer
+      .container
+        .row
+          .col-sm-12.col-md-6
+            h6 About SmartBricks
+            p.text-justify
+              | SmartBricks is a high-end property portal that caters to a global market with its unique services and novel online features. SmartBricks have been launched in the year 2020 by a group of students. The SmartBricks design is based on rigorous research, unique product developments, and innovative initiative which has been readily accepted by users. In an attempt to best serve the users, features on the SmartBricks realty portal are constantly invented, evaluated and upgraded.
+          .col-xs-6.col-md-3
+            h6 Categories
+            ul.footer-links
+              li
+                a(href='/') Buy
+              if !user
+                li
+                  a(href='/users/login') Sell
+              else  
+                li
+                  a(href='/property/sell') Sell
+              li
+                a(href='#') Statistic
+              li
+                a(href='#') Filter
+          .col-xs-6.col-md-3
+            h6 Quick Links
+            ul.footer-links
+              li
+                a(href='#aboutUs') About Us
+              li
+                a(href='/contactus') Contact Us
+              li
+                a(href='#') Contribute
+              li
+                a(href='#') Privacy Policy
+              li
+                a(href='#') Sitemap
+        hr
+      .container
+        .row
+          .col-md-8.col-sm-6.col-xs-12
+            p.copyright-text
+              | Copyright &copy; 2020 All Rights Reserved by 
+              a(href='#') SmartBricks
+              | .
+          .col-md-4.col-sm-6.col-xs-12
+            ul.social-icons
+              li
+                a.facebook(href='mailto:sengroup21@gmail.com')
+                  i.zmdi.zmdi-email
+              li
+                a.twitter(href='https://github.com/pranav-04/SmartBricks' rel='noopener noreferrer' target='_blank')
+                  i.zmdi.zmdi-github
+              li
+                a.linkedin(href='#')
+                  i.zmdi.zmdi-linkedin
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+    script.
+      let count=0;
+      $('.navTrigger').click(function () {
+      if(count===0)
+      {
+      openNav();
+      count= count+1;
+      }
+      else
+      {
+      closeNav();
+      count=0;
+      }
+      })
+    script.
+      function openNav()
+      {
+      document.getElementById("mySidenav").style.width = "250px";
+      }
+      function closeNav()
+      {
+      document.getElementById("mySidenav").style.width = "0";
+      }
+    script.
+      $(window).scroll(function() {
+      if ($(document).scrollTop() > 50) {
+      $('.nav').addClass('affix');
+      console.log("OK");
+      } else {
+      $('.nav').removeClass('affix');
+      }
+      });
+     
+
+
+
+
+
