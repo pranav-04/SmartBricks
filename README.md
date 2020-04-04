@@ -1,5 +1,5 @@
 # Trial 4:SmartBricks
-## Procedure
+## Tools
 1) Download nodejs and install that software
 	link : [https://nodejs.org/en/download/](https://nodejs.org/en/download/)
 2) Download Visual Code and install the software
@@ -17,14 +17,18 @@
 	3) On the next page, append '\db' in data file path. ***Remember not to change log file path. Just change data path to 'C:\mongodb\data\db'.***
 	4) On the next page, uncheck ***Install MongoDB Compass***. Then press install. It might ask for restarting your PC. 
 6) Open CMD as administator and set path to ***C:\mongodb\bin*** and run ***`net start mongodb`***. Ignore if mongoDB is already activated.
-7) Type ***`mongo`*** on terminal.
-8) Type ***`>use trial2`*** on command line.
-9) Open VS Code and press 
+
+## Mongodb Controls
+1) Type ***`mongo`*** on terminal.
+2) Type ***`>use trial2`*** on command line.
+
+## How to run Code ?? 
+1) Open VS Code and press 
 <kbd>Ctrl +`</kbd>
-10) Open folder **trial 4** which you have downloaded from here.
-11) ***``npm install``***
-12) ***``npm run dev``***
-13) Open Chrome browser and type ***``http://localhost:5000``*** 
+2) Open folder **trial 4** which you have downloaded from here.
+3) ***``npm install``***
+4) ***``npm run dev``***
+5) Open Chrome browser and type ***``http://localhost:5000``*** 
 
 
 ## Remaining Work
