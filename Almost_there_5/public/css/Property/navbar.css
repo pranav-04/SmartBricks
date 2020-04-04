@@ -1,0 +1,524 @@
+
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,500,700');
+html,
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Quicksand", sans-serif;
+    font-size: 62.5%;
+    font-size: 10px;
+}
+
+/* Navbar section */
+
+.nav {
+    width: 100%;
+    height: 55px;
+    position: fixed;
+    line-height: 55px;
+    text-align: center;
+    z-index:10;
+    background-color: black;
+    color: white;
+    transform: translateY(-20%);
+}
+
+.nav div.logo {
+    float: left;
+    width: auto;
+    height: auto;
+    padding-left: 3rem;
+    padding-right:30px;
+    background: transparent;
+    margin-bottom: -50px;
+}
+.container1{
+    height:25px;
+}
+.nav div.logo a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 3.5rem;
+}
+
+.nav div.logo a:hover {
+    color: #00E676;
+}
+
+.nav div.main_list {
+    height: inherit;
+    box-align:right;
+    float: right;
+}
+
+.nav div.main_list ul { 
+    height: 45px;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav div.main_list ul li {
+    width: auto;
+    height: 45px;
+    padding: 0;
+    padding-right: 3rem;
+    transform: translateY(15%);
+}
+
+.nav div.main_list ul li a {
+    text-decoration: none;
+    color: #fff;
+    line-height: 30px;
+    font-size: 2.1rem;
+}
+
+.nav div.main_list ul li a:hover,.nav div.main_list ul .dropdown:hover .dropbtn {
+    color: #00E676;
+}
+
+.nav div.main_list ul .dropdown {
+    width: auto;
+    height: 65px;
+    padding: 0;
+    padding-right: 3rem;
+    background: none;
+    border: none;
+  }
+  
+  .nav div.main_list ul  .dropdown .dropbtn {
+    text-decoration: none;
+    line-height: 65px;
+    font-size: 2.1rem;
+    background: none;
+    border: none;
+    color: white;
+  }
+.dropdown-content {
+    display: none;
+    background-color: black;
+    min-width: 100px;
+    z-index: 1;
+    text-align: center;
+  }
+  
+  .dropdown-content a {
+    float: none;
+    color: white;
+    font-size: 1.6rem;
+    text-decoration: none;
+    display:flex;
+    padding-left: 15px;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: gray;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+/* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0px; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 11; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+	
+  }
+
+.sidenav  ul { 
+    height: 65px;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidenav  ul li {
+    width: auto;
+    height: 65px;
+    padding: 0;
+    padding-right: 3rem;
+}
+
+.sidenav  ul li a {
+    text-decoration: none;
+    color: #fff;
+    line-height: 65px;
+    font-size: 2.1rem;
+}
+
+.sidenav ul li a:hover {
+    color: #00E676;
+}
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+/* Home section */
+
+.home {
+    width: 100%;
+    height: 100vh;
+    background-position: center top;
+	background-size:cover;
+}
+
+.navTrigger {
+    display: none;
+}
+
+.nav {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+
+/* Media qurey section */
+@media screen and (min-width: 991px) {
+    .nav
+    {
+        height:auto;
+        width:100%;
+
+    }
+    .container1 {
+        width:inherit;
+        height:inherit;
+    }
+    .nav div.logo
+    {
+        width: 200px;
+    }
+    #mainListDiv{
+        float:right;
+
+    }
+    .sidenav{
+        display: none;
+    }
+}
+
+@media screen and (max-width:990px) {
+    .navTrigger {
+        display: block;
+    }
+    .nav
+    {
+        height:65px;
+    }
+    .nav div.logo {
+        margin-left: 15px;
+        transform: translateY(-15%);
+    }
+    .nav div.main_list {
+        width: 100%;
+        box-align:right;
+        height: 0;
+        overflow: hidden;
+    }
+    .nav div.show_list {
+        
+        height: auto;
+        padding-top:65px;
+        display: none;
+    }
+    .nav div.main_list ul {
+        flex-direction: column;
+        width: 100%;
+        height: 100vh;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background-color: #111;
+        /*same background color of navbar*/
+        background-position: center top;
+    }
+    .nav div.main_list ul li {
+        width: 100%;
+        text-align: right;
+    }
+    .nav div.main_list ul li a {
+        text-align: center;
+        width: 100%;
+        font-size: 3rem;
+        padding: 20px;
+    }
+    
+    .nav div.media_button {
+        display: block;
+    }
+
+
+
+    .sidenav ul {
+        flex-direction: column;
+        width: 100%;
+        height: 100vh;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background-color: #111;
+        /*same background color of navbar*/
+        background-position: center top;
+    }
+    .sidenav ul li {
+        width: 100%;
+        text-align: right;
+    }
+    .sidenav ul li a {
+        text-align: center;
+        width: 100%;
+        font-size: 3rem;
+        padding: 20px;
+    }
+
+
+
+
+
+}
+
+
+/* Animation */
+/* Inspiration taken from Dicson https://codemyui.com/simple-hamburger-menu-x-mark-animation/ */
+
+.navTrigger {
+    cursor: pointer;
+    width: 30px;
+    height: 25px;
+    margin: auto;
+    position: absolute;
+    right: 30px;
+    top: 0;
+    bottom: 0;
+}
+
+.navTrigger i {
+    background-color: #fff;
+    border-radius: 2px;
+    content: '';
+    display: block;
+    width: 90%;
+    height: 4px;
+}
+
+.navTrigger i:nth-child(1) {
+    -webkit-animation: outT 0.8s backwards;
+    animation: outT 0.8s backwards;
+    -webkit-animation-direction: reverse;
+    animation-direction: reverse;
+}
+.navTrigger i:nth-child(2) {
+    margin: 5px 0;
+    -webkit-animation: outM 0.8s backwards;
+    animation: outM 0.8s backwards;
+    -webkit-animation-direction: reverse;
+    animation-direction: reverse;
+}
+
+.navTrigger i:nth-child(3) {
+    -webkit-animation: outBtm 0.8s backwards;
+    animation: outBtm 0.8s backwards;
+    -webkit-animation-direction: reverse;
+    animation-direction: reverse;
+}
+
+.navTrigger.active i:nth-child(1) {
+    -webkit-animation: inT 0.8s forwards;
+    animation: inT 0.8s forwards;
+}
+
+.navTrigger.active i:nth-child(2) {
+    -webkit-animation: inM 0.8s forwards;
+    animation: inM 0.8s forwards;
+}
+
+.navTrigger.active i:nth-child(3) {
+    -webkit-animation: inBtm 0.8s forwards;
+    animation: inBtm 0.8s forwards;
+}
+
+@-webkit-keyframes inM 
+{
+    /*  here the percentage shows the position at which the line should be when that much percentage of the animation is completed */
+ 
+    50% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(45deg);
+    }
+}
+
+@keyframes inM 
+{
+    /*  here the percentage shows the position at which the line should be when that much percentage of the animation is completed */
+ 
+    50% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(45deg);
+    }
+}
+
+@-webkit-keyframes outM 
+{
+    /*  here the percentage shows the position at which the line should be when that much percentage of the animation is completed */
+    50% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(45deg);
+    }
+}
+
+@keyframes outM 
+{
+    /*  here the percentage shows the position at which the line should be when that much percentage of the animation is completed */
+    50% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(45deg);
+    }
+}
+
+@-webkit-keyframes inT 
+{
+    /*  here the percentage shows the position at which the line should be when that much percentage of the animation is completed */
+    0% {
+        -webkit-transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        -webkit-transform: translateY(9px) rotate(0deg);
+    }
+    100% {
+        -webkit-transform: translateY(9px) rotate(135deg);
+    }
+}
+
+@keyframes inT 
+{/*  here the percentage shows the position at which the line should be when that much percentage of the animation is completed */
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(9px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(9px) rotate(135deg);
+    }
+}
+
+@-webkit-keyframes outT 
+{
+    /*  here the percentage shows the position at which the line should be when that much percentage of the animation is completed */
+    0% {
+        -webkit-transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        -webkit-transform: translateY(9px) rotate(0deg);
+    }
+    100% {
+        -webkit-transform: translateY(9px) rotate(135deg);
+    }
+}
+
+@keyframes outT 
+{
+    /*  here the percentage shows the position at which the line should be when that much percentage of the animation is completed */
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(9px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(9px) rotate(135deg);
+    }
+}
+
+@-webkit-keyframes inBtm 
+{
+    /*  here the percentage shows the position at which the line should be when that much percentage of the animation is completed */
+    0% {
+        -webkit-transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        -webkit-transform: translateY(-9px) rotate(0deg);
+    }
+    100% {
+        -webkit-transform: translateY(-9px) rotate(135deg);
+    }
+}
+
+@keyframes inBtm {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-9px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-9px) rotate(135deg);
+    }
+}
+
+@-webkit-keyframes outBtm {
+    0% {
+        -webkit-transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        -webkit-transform: translateY(-9px) rotate(0deg);
+    }
+    100% {
+        -webkit-transform: translateY(-9px) rotate(135deg);
+    }
+}
+
+@keyframes outBtm {
+    0% {
+        transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-9px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(-9px) rotate(135deg);
+    }
+}
+/* this is added to the main nav bar to change the styling so that the nav bar becomes responsive to the page size */
+.affix {
+    padding: 0;
+    background-color: #111;
+    color: #fff;
+}
+
+
+
+
+
+
+
+@media all and (max-width:700px){
+	.myP {
+		padding:2%;
+	}
+}
