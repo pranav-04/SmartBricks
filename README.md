@@ -19,8 +19,9 @@
 6) Open CMD as administator and set path to ***C:\mongodb\bin*** and run ***`net start mongodb`***. Ignore if mongoDB is already activated.
 
 ## Mongodb Controls
-1) Type ***`mongo`*** on terminal.
-2) Type ***`>use trial2`*** on command line.
+1) Open CMD as administator and set path to ***C:\mongodb\bin***
+2) Type ***`mongo`*** on terminal.
+3) Type ***`>use trial2`*** on command line.
 
 ## How to run Code ?? 
 1) Open VS Code and press 
