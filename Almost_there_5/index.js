@@ -113,8 +113,8 @@ app.get('/contactus',(req,res)=>{
 app.post('/search',(req,res)=> {
   let qyery = { Location: req.body.location.toString(), }
   Property.find({
-    Location: req.body.location,
-    Price : {$lt:req.body.maxprice}
+    // Location: req.body.location,
+    // Price : {$lt:req.body.maxprice}
   },(err,properties)=>{
     if(err){
       console.log(err)
