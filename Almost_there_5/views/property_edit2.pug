@@ -16,7 +16,7 @@ append head
 
 block content
   .wrapper
-    form#wizard(method='POST' action='/property/edit/'+property._id)
+    form#wizard(method='POST' action='/property/edit/'+property._id enctype='multipart/form-data')
       // SECTION 1
       h4
       section
