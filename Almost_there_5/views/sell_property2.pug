@@ -1,6 +1,11 @@
 extends layout2
 
 append head
+
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css')
+
+  //- script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+
   link(rel='stylesheet' href='/fonts/material-design-iconic-font/css/material-design-iconic-font.css')
   // DATE-PICKER
   link(rel='stylesheet' href='/vendor/date-picker/css/datepicker.min.css')
@@ -13,6 +18,10 @@ append head
   script(src='/vendor/date-picker/js/datepicker.js')
   script(src='/vendor/date-picker/js/datepicker.en.js')
   script(src='/js/main_property_sell_edit.js')
+  link(rel='stylesheet' href='https://unpkg.com/leaflet@1.6.0/dist/leaflet.css' integrity='sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==' crossorigin='')
+  script(src='https://unpkg.com/leaflet@1.6.0/dist/leaflet.js' integrity='sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==' crossorigin='')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js')
+
 
 block content
   .wrapper
@@ -35,8 +44,7 @@ block content
             label(for='isBuilder')
               | Are you a Builder
             .form-holder
-              i.zmdi.zmdi-account-o
-              select.form-control(name='isBuilder' id='isBuilder')
+              select.form-control(name='isBuilder' id='isBuilder',style="margin-left:0px")
                 option.option(value='yes') Yes
                 option.option(value='no') No
               i.zmdi.zmdi-chevron-down
@@ -149,8 +157,102 @@ block content
             .form-holder
               i.zmdi.zmdi-upload
               input.form-control(style='padding-top:8px' type='file',name='images', id='images' multiple)
+          .form-col
+            label(for="")
+              | Select Property Location
+            .form-holder
+              input#chooseLocation.btn.btn-primary(value="Choose location",type='button' data-toggle='modal' data-target='#myModal')
         .form-row
           .form-col
             .form-holder
               input.btn.btn-primary(type='submit',value = 'Submit')
+          
+              
+                
+  // Modal
+  #myModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true')
+    .modal-dialog.modal-dialog-centered(role='document')
+      .modal-content
+        .modal-header
+          h5#exampleModalLongTitle.modal-title Choose Location
+          button.close(type='button' data-dismiss='modal' aria-label='Close')
+            span(aria-hidden='true') &times;
+        .modal-body
+          textarea#address.form-control(placeholder='Search Here')
+          #searchError Location not found! Try something else
+          #mapid
+        .modal-footer
+          input.btn.btn-primary(type='button' data-dismiss='modal' value="Close",style="position:center") 
+          input#saveChanges.btn.btn-primary(type='button',value="Save Changes") 
+
+  script(type='text/javascript').
+    var userPos=[];
+    var mymap;
+    var theMarker = {};
+    var lat,lon;
+    function setMap(pos){
+    mymap = L.map('mapid').setView(userPos, 13);
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoicHJhbmF2LTA0IiwiYSI6ImNrOGZudmMybDA1NDIzZG1reHozOWUwbTgifQ.RVN4hUKvoi39jyWyQf-bZA'
+    }).addTo(mymap);
+    }
+    navigator.geolocation.getCurrentPosition( (position) => {
+    userPos.push(position.coords.latitude);
+    userPos.push(position.coords.longitude);
+    setMap(userPos);
+    mymap.on('click',function(e){
+    lat = e.latlng.lat;
+    lon = e.latlng.lng;
+    //Clear existing marker,
+    if (theMarker != undefined) {
+    mymap.removeLayer(theMarker);
+    };
+    //Add a marker to show where you clicked.
+    theMarker = L.marker([lat,lon]).addTo(mymap);
+    });
+    } );
+    $('#myModal').on('show.bs.modal', function(){
+    setTimeout(function() {
+    mymap.invalidateSize();
+    }, 200);
+    });
+    $('#saveChanges').on('click', () => {
+    console.log("You have selected lat: " + lat + " lon: " + lon);
+    $('#myModal').modal('toggle');
+    });
+    //Handle input
+    var address = document.getElementById('address');
+    address.addEventListener('keydown', (event) => {
+    if(event.which === 13 && event.shiftKey == false){
+    var xmlhttp = new XMLHttpRequest();
+    var url = "https://nominatim.openstreetmap.org/search?format=json&limit=3&q=" + address.value;
+    xmlhttp.onreadystatechange = function()
+    {
+    if (this.readyState == 4 && this.status == 200)
+    {
+    var data = JSON.parse(this.responseText);
+    if(data.length > 0){
+    var loc = [];
+    loc.push(data[0].lat);
+    loc.push(data[0].lon);
+    mymap.flyTo(loc, 13);
+    }
+    else{
+    document.querySelector('#searchError').style.display="block";
+    }
+    }
+    };
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+    event.preventDefault();
+    }
+    });
+    address.addEventListener('input', () => {
+    document.querySelector('#searchError').style.display="none";
+    });
 
