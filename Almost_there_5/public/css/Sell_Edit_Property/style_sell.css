@@ -175,12 +175,14 @@ h3 {
       margin-right: 0; }
   .form-row2{
     display: flex;
-    margin-bottom: 25px; 
+    margin-bottom: 15px; 
     font-size: 20px;
+    padding: 0;
   }
   .form-row2 .form-col2 {
     width: 50%;
     margin-right: 40px; 
+    padding: 0;
   }
 
 .form-col label {
