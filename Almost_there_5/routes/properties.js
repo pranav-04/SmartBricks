@@ -160,7 +160,7 @@ router.post('/request/:id',(req,res) =>{
 })
 
 
-router.post('/edit/:id',(req,res) =>{
+router.post('/edit/:id',upload.array('images',5),(req,res) =>{
 
     req.checkBody('name','Name is required').notEmpty();
     req.checkBody('name','Name is required').notEmpty();
@@ -172,7 +172,6 @@ router.post('/edit/:id',(req,res) =>{
     req.checkBody('zipcode','Zipcode is required').notEmpty();
     req.checkBody('zipcode','Zipcode is invalid').isInt({ gt: 99999 });
     req.checkBody('price','Price is required').notEmpty();
-    req.checkBody('images','Property Images are required').notEmpty();
     let errors = req.validationErrors();
     if(errors){
         let a = "| "
@@ -206,6 +205,8 @@ router.post('/edit/:id',(req,res) =>{
     property.Owner = req.user.name
     property.verified = false
     property.req_verified = false
+    property.images = []
+    console.log(req.files)
     for (let i = 0; i < req.files.length; i++) {
         console.log(req.files[i].filename)
         property.images.push(req.files[i].filename)            
@@ -295,7 +296,6 @@ router.post('/sell', upload.array('images',5),(req,res) => {
     req.checkBody('zipcode','Zipcode is required').notEmpty();
     req.checkBody('zipcode','Zipcode is invalid').isInt({ gt: 99999 });
     req.checkBody('price','Price is required').notEmpty();
-    req.checkBody('images','Property Images are required').notEmpty();
     let errors = req.validationErrors();
     if(errors){
         let a = "| "
