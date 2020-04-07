@@ -229,12 +229,13 @@ head
     #myModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true')
       .modal-dialog.modal-dialog-centered(role='document')
         .modal-content
-          .modal-header
-            h5#exampleModalLongTitle.modal-title Choose Location
-            button.close(type='button' data-dismiss='modal' aria-label='Close')
-              span(aria-hidden='true') &times;
           .modal-body
-            textarea#address.form-control(placeholder='Search Here')
+            .row
+              .col-6
+                textarea#address.form-control(placeholder='Search Here')
+              .col-6
+                button.close(type='button' data-dismiss='modal' aria-label='Close')
+                  span(aria-hidden='true') &times;
             #searchError Location not found! Try something else
             #mapid
           .modal-footer
