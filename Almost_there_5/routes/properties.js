@@ -74,7 +74,9 @@ router.get('/edit/:id',ensureAuthenticated,(req,res) =>{
         }else{
             res.render('edit',{
                 title: 'Edit',
-                property:property
+                property:property,
+                lat: property.lat,
+                lon: property.lon
             })
         }
     })
@@ -172,6 +174,8 @@ router.post('/edit/:id',upload.array('images',5),(req,res) =>{
     req.checkBody('zipcode','Zipcode is required').notEmpty();
     req.checkBody('zipcode','Zipcode is invalid').isInt({ gt: 99999 });
     req.checkBody('price','Price is required').notEmpty();
+    req.checkBody('lat','Please choose location').notEmpty();
+    req.checkBody('lon','Please choose location').notEmpty();
     let errors = req.validationErrors();
     if(errors){
         let a = "| "
@@ -194,6 +198,7 @@ router.post('/edit/:id',upload.array('images',5),(req,res) =>{
     } else{
 
     let property = {}
+    property.Owner = req.user.name
     property.Name = req.body.name
     property.Description = req.body.description
     property.isBuilder = req.body.isBuilder
@@ -202,7 +207,9 @@ router.post('/edit/:id',upload.array('images',5),(req,res) =>{
     property.BHK = req.body.BHK
     property.ownerid = req.user._id
     property.zipcode = req.body.zipcode
-    property.Owner = req.user.name
+    property.Price = req.body.price
+    property.lat = req.body.lat
+    property.lon = req.body.lon
     property.verified = false
     property.req_verified = false
     property.images = []
@@ -296,6 +303,8 @@ router.post('/sell', upload.array('images',5),(req,res) => {
     req.checkBody('zipcode','Zipcode is required').notEmpty();
     req.checkBody('zipcode','Zipcode is invalid').isInt({ gt: 99999 });
     req.checkBody('price','Price is required').notEmpty();
+    req.checkBody('lat','Please choose location').notEmpty();
+    req.checkBody('lon','Please choose location').notEmpty();
     let errors = req.validationErrors();
     if(errors){
         let a = "| "
@@ -319,6 +328,8 @@ router.post('/sell', upload.array('images',5),(req,res) => {
         property.ownerid = req.user._id
         property.zipcode = req.body.zipcode
         property.Price = req.body.price
+        property.lat = req.body.lat
+        property.lon = req.body.lon
         property.verified = false
         property.req_verified = false
         console.log(req.files)
