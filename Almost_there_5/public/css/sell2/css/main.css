@@ -29,14 +29,18 @@
   font-family: Montserrat-Medium;
   src: url('../fonts/montserrat/Montserrat-Medium.ttf'); 
 }
-
 .modal-dialog{
-  height: 600px;
-  width: 70%; 
+  height: 100vh;
+  margin: auto;
+  padding: 0;
+  width: 100%;
+}
+.modal-content{
+  width:100%;
+  align-items: center;
 }
 #mapid{
-  height: 500px;
-  width: 100%;
+  height: 65vh;
 }
 .modal-footer{
 align-items: center;
