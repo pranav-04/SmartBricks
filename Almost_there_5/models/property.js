@@ -17,6 +17,14 @@ let propertySchema = mongoose.Schema({
         type:String,
         required: true
     },
+    lat:{
+        type: Number,
+        required: true
+    },
+    lon:{
+        type: Number,
+        required: true
+    },
     Sqfoot:{
         type: Number,
         required: true
