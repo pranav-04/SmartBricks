@@ -188,7 +188,7 @@ router.post('/edit/:id',upload.array('images',5),(req,res) =>{
                 console.log(err)
             }
             else{
-                res.render('edit2',{
+                res.render('edit',{
                     title:'Edit Property',
                     errors:a , 
                     property:property,
