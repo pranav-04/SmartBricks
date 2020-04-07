@@ -1,0 +1,364 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  title SmartBricks
+  link(href='/css/Property/navbar.css' rel='stylesheet' type='text/css')
+  link(rel='stylesheet' type='text/css' href='/css/sell2/vendor/bootstrap/css/bootstrap.min.css')
+  link(rel='stylesheet' type='text/css' href='/css/sell2/vendor/animate/animate.css')
+  link(rel='stylesheet' type='text/css' href='/css/sell2/vendor/css-hamburgers/hamburgers.min.css')
+  link(rel='stylesheet' type='text/css' href='/css/sell2/vendor/animsition/css/animsition.min.css')
+  link(rel='stylesheet' type='text/css' href='/css/sell2/vendor/select2/select2.min.css')
+  link(rel='stylesheet' type='text/css' href='/css/sell2/vendor/daterangepicker/daterangepicker.css')
+  link(rel='stylesheet' type='text/css' href='/css/sell2/vendor/noui/nouislider.min.css')
+  link(rel='stylesheet' type='text/css' href='/css/sell2/css/util.css')
+  link(rel='stylesheet' type='text/css' href='/css/sell2/css/main.css')
+  link(rel='stylesheet' type='text/css' href='/css/sell2/fonts/font-awesome-4.7.0/css/font-awesome.min.css')
+  link(rel='stylesheet' type='text/css' href='/css/sell2/fonts/iconic/css/material-design-iconic-font.min.css')
+  link(rel='stylesheet' href='https://unpkg.com/leaflet@1.6.0/dist/leaflet.css' integrity='sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==' crossorigin='')
+  script(src='https://unpkg.com/leaflet@1.6.0/dist/leaflet.js' integrity='sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==' crossorigin='')
+  // Latest compiled and minified CSS
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css')
+  // jQuery library
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js')
+
+
+  body 
+    div 
+      #mySidenav.sidenav
+        ul
+          li
+            a(href='/') Buy
+          if !user
+            li
+              a(href='/users/login') Sell
+          else  
+            li 
+              a(href='/property/sell') Sell
+          li
+            a(href='/') Statistic
+          li
+            a(href='/') Filter
+          if !user
+            li
+              a(href='/users/register') SignUp
+            li
+              a(href='/users/login') Login
+          else 
+            li 
+              a(href='/users/my_property') My Property
+            li
+              a(href='/users/mychat') My Chat
+            li
+              a(href='#') My Profile
+            li
+              a(href='#') History
+            li    
+              a(href='/users/logput') Logout
+      nav.nav
+        .container1
+          .logo(style='float:left')
+            a(href='/') SmartBricks
+          #mainListDiv.main_list(style='float:right')
+            ul.navlinks
+              li
+                a(href='/') Buy
+              if !user
+                li
+                  a(href='/users/login') Sell
+              else
+                li 
+                  a(href='/property/sell') Sell
+              li
+                a(href='/') Statistic
+              li
+                a(href='/') Filter
+              if !user
+                li
+                  a(href='/users/register') SignUp
+                li
+                  a(href='/users/login') Login
+              else  
+                li
+                  a(href='/users/my_property') My property
+                .dropdown
+                  button.dropbtn
+                    | Settings 
+                    i.zmdi.zmdi-caret-down
+                  .dropdown-content
+                    a(href='/users/mychat') My Chat
+                    a(href='#') My Profile
+                    a(href='#') History
+                    a(href='/users/logout') Logout
+          span.navTrigger
+            i
+            i
+            i
+    .container-contact100
+      .wrap-contact100
+        form.contact100-form.validate-form(method='POST' action='/property/sell' enctype='multipart/form-data')
+          span.contact100-form-title
+            | Property Details
+          != messages('message',locals)
+          if errors
+            span.contact100-form-title(style="color:red;font-size:15px;") #{errors}
+          .wrap-input100.validate-input.bg1.rs1-wrap-input100(data-validate='Please Type Property Name')
+            span.label-input100 Property Name *
+            input.input100(type='text' name='name' placeholder='Enter Your Name')
+          .wrap-input100.bg1.rs1-wrap-input100
+            span.label-input100 Are you a builder *
+            div
+              select.js-select2(name='isBuilder' ,id='isBuilder')
+                option Yes
+                option No
+              .dropDownSelect2
+          .wrap-input100.validate-input.bg0.rs1-alert-validate(data-validate='Please Type Property Description')
+            span.label-input100 Description *
+            textarea.input100(name='description' placeholder='Description here...')
+          span.contact100-form-title
+            | Amenities
+          .wrap-input200.bg1.rs1-wrap-input100
+            .row
+              .col-1
+                input.input200(type='checkbox' name='Gym')
+              .col
+                span.label-input200 Gym
+          .wrap-input200.bg1.rs1-wrap-input100
+            .row
+              .col-1
+                input.input200(type='checkbox' name='Lawn_Free_Space')
+              .col
+                span.label-input200 Lawn/Free Space
+          .wrap-input200.bg1.rs1-wrap-input100
+            .row
+              .col-1
+                input.input200(type='checkbox' name='Security')
+              .col
+                span.label-input200 Security
+          .wrap-input200.bg1.rs1-wrap-input100
+            .row
+              .col-1
+                input.input200(type='checkbox' name='CCTV')
+              .col
+                span.label-input200 CCTV
+          .wrap-input200.bg1.rs1-wrap-input100
+            .row
+              .col-1
+                input.input200(type='checkbox' name='School_within_5')
+              .col
+                span.label-input200 School Within 5KM
+          .wrap-input200.bg1.rs1-wrap-input100
+            .row
+              .col-1
+                input.input200(type='checkbox' name='Hospital_within_5')
+              .col
+                span.label-input200 Hospital Within 5KM
+          .wrap-input200.bg1.rs1-wrap-input100
+            .row
+              .col-1
+                input.input200(type='checkbox' name='Railway_within_5')
+              .col
+                span.label-input200 Railway Station within 5KM
+          .wrap-input200.bg1.rs1-wrap-input100
+            .row
+              .col-1
+                input.input200(type='checkbox' name='Airport_within_5')
+              .col
+                span.label-input200 Airport within 5KM
+          .wrap-input200.bg1.rs1-wrap-input100
+            .row
+              .col-1
+                input.input200(type='checkbox' name='water')
+              .col
+                span.label-input200 24 X 7 Water
+          .wrap-input200.bg1.rs1-wrap-input100
+            .row
+              .col-1
+                input.input200(type='checkbox' name='electricity')
+              .col
+                span.label-input200 24 X 7 Electricity
+          .wrap-input200.bg1.rs1-wrap-input100
+            .row
+              .col-1
+                input.input200(type='checkbox' name='Lift')
+              .col
+                span.label-input200 Lift
+          .wrap-input200.bg1.rs1-wrap-input100
+            .row
+              .col-1
+                input.input200(type='checkbox' name='Club_House')
+              .col
+                span.label-input200 Club House
+          span.contact100-form-title
+            | Locality
+          .wrap-input100.validate-input.bg1.rs1-wrap-input100(data-validate='Please enter location')
+            span.label-input100 Location *
+            input.input100(type='text' name='location' placeholder='Enter Location')
+          .wrap-input100.validate-input.bg1.rs1-wrap-input100(data-validate='Please enter zipcode')
+            span.label-input100 Zipcode *
+            input.input100(type='text' name='zipcode' placeholder='Enter Zipcode')
+          .wrap-input100.validate-input.bg1.rs1-wrap-input100(data-validate='Please enter BHK')
+            span.label-input100 BHK *
+            input.input100(type='number' name='BHK' min='0' placeholder='Enter BHK')
+          .wrap-input100.validate-input.bg1.rs1-wrap-input100(data-validate='Please enter area')
+            span.label-input100 Area in Sqft*
+            input.input100(type='number' name='sqfoot',min='1' placeholder='Enter Area in Sqft')
+          .wrap-input100.validate-input.bg1.rs1-wrap-input100(data-validate='Please enter Price')
+            span.label-input100 Price *
+            input.input100(type='number' name='price' min='1' placeholder='Enter Price')
+          .wrap-input100.bg1.rs1-wrap-input100
+            span.label-input100 Enter images *
+            input.input100(type='file' name='images', id='images' multiple)
+          .container-contact200-form-btn
+            button.contact100-form-btn(id="chooseLocation",type='button' data-toggle='modal' data-target='#myModal')
+              span
+                | Choose Location
+          .container-contact100-form-btn
+            input.contact100-form-btn(type='submit',value = 'Submit') 
+
+      // Modal
+      #myModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true')
+        .modal-dialog.modal-dialog-centered(role='document')
+          .modal-content
+            .modal-header
+              h5#exampleModalLongTitle.modal-title Choose Location
+              button.close(type='button' data-dismiss='modal' aria-label='Close')
+                span(aria-hidden='true') &times;
+            .modal-body
+              textarea#address.form-control(placeholder='Search Here')
+              #searchError Location not found! Try something else
+              #mapid
+            .modal-footer
+              button.contact100-form-btn(type='button' data-dismiss='modal' value="Close",style="position:center")
+                span
+                  | Close
+              button#saveChanges.contact100-form-btn(type='button' data-dismiss='modal')
+                span
+                  | Save Changes
+
+    script(type='text/javascript').
+      var userPos=[];
+      var mymap;
+      var theMarker = {};
+      var lat,lon;
+      function setMap(pos){
+      mymap = L.map('mapid').setView(userPos, 13);
+      L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      maxZoom: 18,
+      id: 'mapbox/streets-v11',
+      tileSize: 512,
+      zoomOffset: -1,
+      accessToken: 'pk.eyJ1IjoicHJhbmF2LTA0IiwiYSI6ImNrOGZudmMybDA1NDIzZG1reHozOWUwbTgifQ.RVN4hUKvoi39jyWyQf-bZA'
+      }).addTo(mymap);
+      }
+      navigator.geolocation.getCurrentPosition( (position) => {
+      userPos.push(position.coords.latitude);
+      userPos.push(position.coords.longitude);
+      setMap(userPos);
+      mymap.on('click',function(e){
+      lat = e.latlng.lat;
+      lon = e.latlng.lng;
+      //Clear existing marker,
+      if (theMarker != undefined) {
+      mymap.removeLayer(theMarker);
+      };
+      //Add a marker to show where you clicked.
+      theMarker = L.marker([lat,lon]).addTo(mymap);
+      });
+      } );
+      $('#myModal').on('show.bs.modal', function(){
+      setTimeout(function() {
+      mymap.invalidateSize();
+      }, 200);
+      });
+      $('#saveChanges').on('click', () => {
+      console.log("You have selected lat: " + lat + " lon: " + lon);
+      $('#myModal').modal('toggle');
+      });
+      //Handle input
+      var address = document.getElementById('address');
+      address.addEventListener('keydown', (event) => {
+      if(event.which === 13 && event.shiftKey == false){
+      var xmlhttp = new XMLHttpRequest();
+      var url = "https://nominatim.openstreetmap.org/search?format=json&limit=3&q=" + address.value;
+      xmlhttp.onreadystatechange = function()
+      {
+      if (this.readyState == 4 && this.status == 200)
+      {
+      var data = JSON.parse(this.responseText);
+      if(data.length > 0){
+      var loc = [];
+      loc.push(data[0].lat);
+      loc.push(data[0].lon);
+      mymap.flyTo(loc, 13);
+      }
+      else{
+      document.querySelector('#searchError').style.display="block";
+      }
+      }
+      };
+      xmlhttp.open("GET", url, true);
+      xmlhttp.send();
+      event.preventDefault();
+      }
+      });
+      address.addEventListener('input', () => {
+      document.querySelector('#searchError').style.display="none";
+      });
+
+    script(src='/css/sell2/vendor/jquery/jquery-3.2.1.min.js')
+    script(src='/css/sell2/vendor/animsition/js/animsition.min.js')
+    script(src='/css/sell2/vendor/bootstrap/js/popper.js')
+    script(src='/css/sell2/vendor/bootstrap/js/bootstrap.min.js')
+    script(src='/css/sell2/vendor/select2/select2.min.js')
+    script.
+      $(".js-select2").each(function(){
+      $(this).select2({
+      minimumResultsForSearch: 20,
+      dropdownParent: $(this).next('.dropDownSelect2')
+      });
+      $(".js-select2").each(function(){
+      $(this).on('select2:close', function (e){
+      if($(this).val() == "Please chooses") {
+      $('.js-show-service').slideUp();
+      }
+      else {
+      $('.js-show-service').slideUp();
+      $('.js-show-service').slideDown();
+      }
+      });
+      });
+      })
+    script(src='/css/sell2/vendor/daterangepicker/moment.min.js')
+    script(src='/css/sell2/vendor/daterangepicker/daterangepicker.js')
+    script(src='/css/sell2/vendor/countdowntime/countdowntime.js')
+    script(src='/css/sell2/vendor/noui/nouislider.min.js')
+    script.
+      var filterBar = document.getElementById('filter-bar');
+      noUiSlider.create(filterBar, {
+      start: [ 1500, 3900 ],
+      connect: true,
+      range: {
+      'min': 1500,
+      'max': 7500
+      }
+      });
+      var skipValues = [
+      document.getElementById('value-lower'),
+      document.getElementById('value-upper')
+      ];
+      filterBar.noUiSlider.on('update', function( values, handle ) {
+      skipValues[handle].innerHTML = Math.round(values[handle]);
+      $('.contact100-form-range-value input[name="from-value"]').val($('#value-lower').html());
+      $('.contact100-form-range-value input[name="to-value"]').val($('#value-upper').html());
+      });
+    // ===============================================================================================
+    script(src='/css/sell2/js/main.js')
+    // Global site tag (gtag.js) - Google Analytics
+    script(async='' src='https://www.googletagmanager.com/gtag/js?id=UA-23581568-13')
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-23581568-13');
