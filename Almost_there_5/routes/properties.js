@@ -45,7 +45,7 @@ const upload = multer({
 })
 
 router.get('/sell',ensureAuthenticated,(req,res) => {
-    res.render('sell_property2',{
+    res.render('sell',{
         title : 'Sell Property'
     })
 })
@@ -303,7 +303,7 @@ router.post('/sell', upload.array('images',5),(req,res) => {
             a = a + errors[index].msg + ' | '
         }
         res.locals.user = req.user || null
-        res.render('sell_property2',{
+        res.render('sell',{
             title:'Sell Property',
             errors:a
         })
