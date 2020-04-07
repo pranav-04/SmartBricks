@@ -220,36 +220,40 @@ head
             button.contact100-form-btn(id="chooseLocation",type='button' data-toggle='modal' data-target='#myModal')
               span
                 | Choose Location
+          input#lat.form-control(type='hidden' name='lat' value=property.lat) 
+          input#lon.form-control(type='hidden' name='lon' value=property.lon)
           .container-contact100-form-btn
             input.contact100-form-btn(type='submit',value = 'Submit') 
 
-      // Modal
-      #myModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true')
-        .modal-dialog.modal-dialog-centered(role='document')
-          .modal-content
-            .modal-header
-              h5#exampleModalLongTitle.modal-title Choose Location
-              button.close(type='button' data-dismiss='modal' aria-label='Close')
-                span(aria-hidden='true') &times;
-            .modal-body
-              textarea#address.form-control(placeholder='Search Here')
-              #searchError Location not found! Try something else
-              #mapid
-            .modal-footer
-              button.contact100-form-btn(type='button' data-dismiss='modal' value="Close",style="position:center")
-                span
-                  | Close
-              button#saveChanges.contact100-form-btn(type='button' data-dismiss='modal')
-                span
-                  | Save Changes
+    // Modal
+    #myModal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true')
+      .modal-dialog.modal-dialog-centered(role='document')
+        .modal-content
+          .modal-header
+            h5#exampleModalLongTitle.modal-title Choose Location
+            button.close(type='button' data-dismiss='modal' aria-label='Close')
+              span(aria-hidden='true') &times;
+          .modal-body
+            textarea#address.form-control(placeholder='Search Here')
+            #searchError Location not found! Try something else
+            #mapid
+          .modal-footer
+            button.contact100-form-btn(type='button' data-dismiss='modal' value="Close",style="position:center")
+              span
+                | Close
+            button#saveChanges.contact100-form-btn(type='button' data-dismiss='modal')
+              span
+                | Save Changes
 
     script(type='text/javascript').
-      var userPos=[];
+      var proPos = [];
       var mymap;
       var theMarker = {};
-      var lat,lon;
-      function setMap(pos){
-      mymap = L.map('mapid').setView(userPos, 13);
+      var lat="#{lat}";
+      var lon="#{lon}";
+      proPos.push(lat);
+      proPos.push(lon);
+      mymap = L.map('mapid').setView(proPos, 13);
       L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
       maxZoom: 18,
@@ -258,11 +262,7 @@ head
       zoomOffset: -1,
       accessToken: 'pk.eyJ1IjoicHJhbmF2LTA0IiwiYSI6ImNrOGZudmMybDA1NDIzZG1reHozOWUwbTgifQ.RVN4hUKvoi39jyWyQf-bZA'
       }).addTo(mymap);
-      }
-      navigator.geolocation.getCurrentPosition( (position) => {
-      userPos.push(position.coords.latitude);
-      userPos.push(position.coords.longitude);
-      setMap(userPos);
+      theMarker = L.marker([lat,lon]).addTo(mymap);
       mymap.on('click',function(e){
       lat = e.latlng.lat;
       lon = e.latlng.lng;
@@ -273,14 +273,14 @@ head
       //Add a marker to show where you clicked.
       theMarker = L.marker([lat,lon]).addTo(mymap);
       });
-      } );
       $('#myModal').on('show.bs.modal', function(){
       setTimeout(function() {
       mymap.invalidateSize();
       }, 200);
       });
       $('#saveChanges').on('click', () => {
-      console.log("You have selected lat: " + lat + " lon: " + lon);
+      document.getElementById('lat').value=lat;
+      document.getElementById('lon').value=lon;
       $('#myModal').modal('toggle');
       });
       //Handle input
