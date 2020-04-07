@@ -191,7 +191,9 @@ router.post('/edit/:id',upload.array('images',5),(req,res) =>{
                 res.render('edit2',{
                     title:'Edit Property',
                     errors:a , 
-                    property:property      
+                    property:property,
+                    lat: property.lat,
+                    lon: property.lon
                 })
             }        
         })
