@@ -72,7 +72,7 @@ router.get('/edit/:id',ensureAuthenticated,(req,res) =>{
         if(err){
             console.log(err)
         }else{
-            res.render('property_edit2',{
+            res.render('edit',{
                 title: 'Edit',
                 property:property
             })
@@ -184,7 +184,7 @@ router.post('/edit/:id',upload.array('images',5),(req,res) =>{
                 console.log(err)
             }
             else{
-                res.render('property_edit2',{
+                res.render('edit2',{
                     title:'Edit Property',
                     errors:a , 
                     property:property      
