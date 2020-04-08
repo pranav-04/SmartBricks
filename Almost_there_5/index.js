@@ -121,8 +121,14 @@ app.post('/search',(req,res)=> {
       return
     }
     else{
-      res.render('search',{
+      let user = null
+      if(req.user == undefined) user = null
+      else user = req.user
+      res.render('search2',{
         title : 'Search Results',
+        user:user,
+        loc:req.body.location,
+        max:req.body.max,
         properties:properties
       })
     }
