@@ -5,6 +5,10 @@ let propertySchema = mongoose.Schema({
         type:String,
         require: true
     },
+    DATE : {
+        type:Date,
+        require: true
+    },
     Description:{
         type:String,
         required: true
@@ -91,7 +95,20 @@ let propertySchema = mongoose.Schema({
     },
     req_verified:{
         type: Boolean,required:true
+    },
+    cityFlag:{
+        type: Boolean,required:true,default:true
+    },
+    maxFlag:{
+        type: Boolean,required:true,default:true
+    },
+    bhkFlag:{
+        type: Boolean,required:true,default:true
+    },
+    areaFlag:{
+        type: Boolean,required:true,default:true
     }
 })
+let Property = module.exports = mongoose.model('Property',propertySchema);
 
-let Property = module.exports = mongoose.model('Property',propertySchema)
+//Property.createIndexes({'Location':'text'});
