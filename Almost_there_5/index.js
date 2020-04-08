@@ -34,8 +34,8 @@ app.set('view engine','pug')
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'purvilmehtadaiict@gmail.com',
-      pass: 'passwordpurvil'
+      user: 'sengroup21@gmail.com',
+      pass: 'senbores@21'
     }
   });
 
