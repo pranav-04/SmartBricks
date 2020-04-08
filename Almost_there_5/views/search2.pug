@@ -1,0 +1,599 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  title SmartBricks
+  script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js' integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n' crossorigin='anonymous')
+  script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js' integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo' crossorigin='anonymous')
+  //- link(href='/css/Navbar/navbar.css' rel='stylesheet' type='text/css')
+  link(rel='stylesheet' href='/css/Search/search.css')
+  link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css' integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh' crossorigin='anonymous')
+  link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+  script(src='https://code.jquery.com/jquery-3.4.1.slim.min.js' integrity='sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n' crossorigin='anonymous')
+  script(src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js' integrity='sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo' crossorigin='anonymous')
+  script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js' integrity='sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6' crossorigin='anonymous')
+  link(href='/css/Property/navbar.css' rel='stylesheet' type='text/css')
+  link(rel='stylesheet' href='/css/Main_Page/footer1.css')
+  block head 
+
+  body
+    div
+      #mySidenav.sidenav
+        ul
+          li
+            a(href='/') Buy
+          if !user
+            li
+              a(href='/users/login') Sell
+          else  
+            li 
+              a(href='/property/sell') Sell
+          li
+            a(href='/') Statistic
+          li
+            a(href='/') Filter
+          if !user
+            li
+              a(href='/users/register') SignUp
+            li
+              a(href='/users/login') Login
+          else 
+            li 
+              a(href='/users/my_property') My Property
+            li 
+              a(href='/users/mychat') My Chat
+            li 
+              a(href='#') My Profile
+            li 
+              a(href='#') History
+            li    
+              a(href='/users/logout') Logout
+      nav.nav
+        .container1
+          .logo(style='float:left')
+            a(href='/') SmartBricks
+          #mainListDiv.main_list(style='float:right')
+            ul.navlinks
+              li
+                a(href='/') Buy
+              if !user
+                li
+                  a(href='/users/login') Sell
+              else
+                li 
+                  a(href='/property/sell') Sell
+              li
+                a(href='/') Statistic
+              li
+                a(href='/') Filter
+              if !user
+                li
+                  a(href='/users/register') SignUp
+                li
+                  a(href='/users/login') Login
+              else  
+                li
+                  a(href='/users/my_property') My property
+                .dropdown
+                  button.dropbtn
+                    | Settings 
+                    i.zmdi.zmdi-caret-down
+                  .dropdown-content
+                    a(href='/users/mychat') My Chat
+                    a(href='#') My Profile
+                    a(href='#') History
+                    a(href='/users/logout') Logout
+          span.navTrigger
+            i
+            i
+            i
+
+
+
+  
+
+
+  section#nav-bar-1
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+      a.navbar-brand(href='#') Back to Home
+      button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li#BHK.nav-item.dropdown
+            a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+              | BHK
+            .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item.a0(href='#') NONE
+              a.dropdown-item.a1(href='#') 1 BHK
+              a.dropdown-item.a2(href='#') 2 BHK
+              a.dropdown-item.a3(href='#') 3 BHK
+              a.dropdown-item.a4(href='#') 4 BHK
+              a.dropdown-item.a5(href='#') 5 BHK
+              a.dropdown-item.a6(href='#') &gt; 5 BHK
+          li#MAX.nav-item.dropdown
+            a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+              | Budget
+            .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item.a0(href='#')
+                i.fa.fa-inr
+                |  NONE
+              a.dropdown-item.a5(href='#')
+                i.fa.fa-inr
+                |  5 Lac
+              a.dropdown-item.a10(href='#')
+                i.fa.fa-inr
+                |  10 Lac
+              a.dropdown-item.a40(href='#')
+                i.fa.fa-inr
+                |  40 Lac
+              a.dropdown-item.a70(href='#')
+                i.fa.fa-inr
+                |  70 Lac
+              a.dropdown-item.a100(href='#')
+                i.fa.fa-inr
+                |  1 Cr
+              a.dropdown-item.a200(href='#')
+                i.fa.fa-inr
+                |  2 Cr
+              a.dropdown-item.a400(href='#')
+                i.fa.fa-inr
+                |  4 Cr
+              a.dropdown-item.a500(href='#')
+                i.fa.fa-inr
+                |  5 Cr
+              a.dropdown-item.a600(href='#')
+                i.fa.fa-inr
+                |  &gt; 5 Cr
+              
+          li#SORT.nav-item.dropdown
+            a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' )
+              | Sort By
+            .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item.plth(href='#')
+                i.fa.fa-long-arrow-up
+                |  Price - Low to High
+              a.dropdown-item.phtl(href='#')
+                i.fa.fa-long-arrow-down
+                |  Price - High to Low
+              // <div class="dropdown-divider"></div>
+              a.dropdown-item.MR(href='#')
+                i.fa.fa-long-arrow-up
+                |  Most Recent 
+              a.dropdown-item.alth(href='#')
+                i.fa.fa-long-arrow-up
+                |  sqft - Low to High
+              a.dropdown-item.ahtl(href='#')
+                i.fa.fa-long-arrow-down(aria-hidden='true')
+                |  sqft - High to Low
+
+          li#AREA.nav-item.dropdown
+            a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' )
+              | Area
+            .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item.a0(href='#') NONE
+              a.dropdown-item.a500(href='#') 0 - 1000
+              a.dropdown-item.a1500(href='#') 1000 - 2000
+              a.dropdown-item.a2500(href='#') 2000 - 3000 
+              a.dropdown-item.a3500(href='#') 3000 - 4000
+              a.dropdown-item.a4500(href='#') &gt; 4000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // Here the Results will be appended
+
+  section#price(style="padding-top:95px")
+
+
+
+
+
+
+
+
+
+  
+  footer.site-footer
+    .container
+      .row
+        .col-sm-12.col-md-6
+          h6 About SmartBricks
+          p.text-justify
+              | SmartBricks is a high-end property portal that caters to a global market with its unique services and novel online features. SmartBricks have been launched in the year 2020 by a group of students. The SmartBricks design is based on rigorous research, unique product developments, and innovative initiative which has been readily accepted by users. In an attempt to best serve the users, features on the SmartBricks realty portal are constantly invented, evaluated and upgraded.
+        .col-xs-6.col-md-3
+          h6 Categories
+          ul.footer-links
+            li
+              a(href='/') Buy
+            if !user
+              li
+                a(href='/users/login') Sell
+            else
+              li
+                a(href='/property/sell') Sell
+            li
+              a(href='#') Statistic
+            li
+              a(href='#') Filter
+        .col-xs-6.col-md-3
+          h6 Quick Links
+          ul.footer-links
+            li
+              a(href='/#aboutUs') About Us
+            li
+              a(href='/contactus') Contact Us
+            li
+              a(href='#') Contribute
+            li
+              a(href='#') Privacy Policy
+            li
+              a(href='#') Sitemap
+      hr
+    .container
+      .row
+        .col-md-8.col-sm-6.col-xs-12
+          p.copyright-text
+            | Copyright &copy; 2020 All Rights Reserved by 
+            a(href='#') SmartBricks
+            | .
+        .col-md-4.col-sm-6.col-xs-12
+          ul.social-icons
+            li
+              a.facebook(href='mailto:sengroup21@gmail.com')
+                i.fa.fa-envelope
+            li
+              a.twitter(href='https://github.com/pranav-04/SmartBricks' rel='noopener noreferrer' target='_blank')
+                i.fa.fa-github
+            li
+              a.linkedin(href='#')
+                i.fa.fa-linkedin
+  
+  
+  script.
+    let City = String('#{loc}')
+    let maxPrice = parseInt('#{max}')
+    let Data = !{JSON.stringify(properties)}
+    let COUNT = 0
+
+    function clearPage(){
+      $('#price').html('')
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function addPropertyToResult(property,Dv){
+      //let outer = document.createElement("div");
+      //outer.className = "container";
+
+
+      let outer1 =  document.createElement("div");
+      outer1.className = "single-price";
+      
+      let outer2 = document.createElement("div");
+      outer2.className = "row";
+      
+      let outer3 = document.createElement("div");
+      outer3.className = "col-md-4";
+      let img1 = document.createElement("img");
+      img1.src = 'uploads/'+property.images[0];
+      img1.style = 'width:100%;height:100%;padding:10px';
+      outer3.append(img1);
+      outer2.append(outer3);
+      
+      let outer4 = document.createElement("div");
+      outer4.className = "col-md-8";
+      
+      let outer5 = document.createElement("div");
+      outer5.className = "price-content";
+      
+      let List1 = document.createElement("ul");
+      
+      let Item1 = document.createElement("li");
+      let p1 = document.createElement("p");
+      p1.className = "ff";
+      p1.style = "display:inline;font-size:15px;";
+      let txt1 = document.createTextNode("Name");
+      p1.append(txt1);
+      Item1.append(p1);
+
+
+      let newHeading1 = document.createElement("h3");
+      txt1 = document.createTextNode(property.Name);
+      newHeading1.append(txt1);
+      Item1.append(newHeading1);
+
+      let Badge1 = document.createElement("i");
+      Badge1.className  = "fa fa-check-circle fa-2x";
+      Badge1.style = "color:green;";
+
+      let Badge2 = document.createElement("i");
+      Badge2.className  = "fa fa-calendar-check-o fa-2x";
+
+      if (property.verified == true)
+        Item1.append(Badge1);
+      else if (property.req_verified == true)
+        Item1.append(Badge2);
+
+      let para1 = document.createElement("p");
+      let para2 = document.createElement("p");
+      para1.style = "margin:0;text-transform: uppercase;font-family:Poppins-SemiBold;font-size:15px;";
+      para2.style = "margin:0;text-transform: uppercase;font-family:Poppins-SemiBold;font-size:15px;";
+      txt1 = document.createTextNode("By " + property.Owner);
+      para1.append(txt1);
+      txt1 = document.createTextNode("In " + property.Location);
+      para2.append(txt1);
+      Item1.append(para1);
+      Item1.append(para2);
+      
+      List1.append(Item1);
+
+      Item1 = document.createElement("li");
+      p1 = document.createElement("p");
+      p1.className = "ff";
+      p1.style = "display:inline;font-size:15px;";
+      Badge1 = document.createElement("i");
+      Badge1.className  = "fa fa-inr";
+      txt1 = document.createTextNode("Price");
+      Badge1.append(txt1);
+      p1.append(Badge1);
+      Item1.append(p1);
+      newHeading1 = document.createElement("h3");
+      if(property.Price > 9999999){
+        txt1 = document.createTextNode(property.Price/10000000 + "Cr. (");
+      }
+      else{
+        txt1 = document.createTextNode(property.Price/100000 + "Lac. (");
+      }
+      newHeading1.append(txt1);
+      Item1.append(newHeading1);
+      Badge1 = document.createElement("i");
+      Badge1.className  = "fa fa-inr";
+      Item1.append(Badge1);
+      let number = Math.round(property.Price/property.Sqfoot);
+      newHeading1 = document.createElement("h3");
+      txt1 = document.createTextNode(number+"per sqft)");
+      newHeading1.append(txt1);
+      Item1.append(newHeading1);
+      List1.append(Item1);
+
+      Item1 = document.createElement('li');
+      p1 = document.createElement("p");
+      p1.className = "ff";
+      p1.style = "display:inline;font-size:15px;";
+      txt1 = document.createTextNode("Area");
+      p1.append(txt1);
+      Item1.append(p1);
+      newHeading1 = document.createElement("h3");
+      txt1 = document.createTextNode(property.Sqfoot + "sqft.");
+      newHeading1.append(txt1);
+      Item1.append(newHeading1);
+
+      p1 = document.createElement("p");
+      p1.className = "ff";
+      p1.style = "display:inline;font-size:15px;";
+      txt1 = document.createTextNode("No of BHK");
+      p1.append(txt1);
+      Item1.append(p1);
+      newHeading1 = document.createElement("h3");
+      txt1 = document.createTextNode(property.BHK);
+      newHeading1.append(txt1);
+      Item1.append(newHeading1);
+      List1.append(Item1);
+
+      Item1 = document.createElement('li');
+      p1 = document.createElement("p");
+      p1.className = "ff";
+      p1.style = "display:inline;font-size:15px;";
+      txt1 = document.createTextNode("Description");
+      p1.append(txt1);
+      Item1.append(p1);
+      newHeading1 = document.createElement("h3");
+      newHeading1.style = "font-size:10px";
+      txt1 = document.createTextNode(property.Description);
+      newHeading1.append(txt1);
+      Item1.append(newHeading1);
+      List1.append(Item1);
+
+      outer5.append(List1);
+
+      let Link1 = document.createElement("a");
+      Link1.className = "buy-btn";
+      Link1.href = "/property/"+property._id;
+      txt1 = document.createTextNode("More Details");
+      Link1.append(txt1);
+      outer5.append(Link1);
+
+      Link1 = document.createElement("a");
+      Link1.className = "buy-btn";
+      Link1.href = "#";
+      txt1 = document.createTextNode("Add to wishlist");
+      Link1.append(txt1);
+      outer5.append(Link1);
+
+      Link1 = document.createElement("a");
+      Link1.className = "buy-btn";
+      Link1.href = "#";
+      txt1 = document.createTextNode("Contact Owner");
+      Link1.append(txt1);
+      outer5.append(Link1);
+      
+      outer4.append(outer5);
+      outer2.append(outer4);
+      outer1.append(outer2);
+      //outer.append(outer1);
+
+      Dv.append(outer1);
+      console.log(property.Name);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    function finalFilter(){
+      console.log(COUNT)
+      COUNT+=1
+      clearPage()
+      let Dv = document.createElement("div");
+      Dv.className = "container";
+      Data.forEach(function(ppt){
+        if(ppt.cityFlag && ppt.maxFlag && ppt.bhkFlag && ppt.areaFlag)
+          addPropertyToResult(ppt,Dv);
+      })
+      let FINALLY = $('#price');
+      FINALLY.append(Dv);
+    }
+
+    function cityFilter(city){
+      Data.forEach((ppt)=>{
+        if(ppt.Location.toLowerCase().indexOf(city.toLowerCase())==-1)
+          ppt.cityFlag = false
+        else
+          ppt.cityFlag = true
+      })
+      finalFilter()
+    }
+    cityFilter(City)
+
+    function maxFilter(maxPrice){
+      Data.forEach((ppt)=>{
+        if(ppt.Price>maxPrice && maxPrice<=5e7)
+          ppt.maxFlag = false
+        else
+          ppt.maxFlag = true
+      })
+      finalFilter()
+    }
+    maxFilter(maxPrice)
+    $('li#MAX a.a0').on('click',()=>maxFilter(1e20))
+    $('li#MAX a.a5').on('click',()=>maxFilter(5e5))
+    $('li#MAX a.a10').on('click',()=>maxFilter(1e6))
+    $('li#MAX a.a40').on('click',()=>maxFilter(4e6))
+    $('li#MAX a.a70').on('click',()=>maxFilter(7e6))
+    $('li#MAX a.a100').on('click',()=>maxFilter(1e7))
+    $('li#MAX a.a200').on('click',()=>maxFilter(2e7))
+    $('li#MAX a.a500').on('click',()=>maxFilter(5e7))
+    $('li#MAX a.a600').on('click',()=>maxFilter(6e7))
+
+    function bhkFilter(bhk){
+      Data.forEach((ppt)=>{
+        if(ppt.BHK!=bhk && bhk<=5)
+          ppt.bhkFlag = false
+        else
+          ppt.bhkFlag = true
+      })
+      finalFilter()
+    }
+    $('li#BHK a.a0').on('click',()=>bhkFilter(6))
+    $('li#BHK a.a1').on('click',()=>bhkFilter(1))
+    $('li#BHK a.a2').on('click',()=>bhkFilter(2))
+    $('li#BHK a.a3').on('click',()=>bhkFilter(3))
+    $('li#BHK a.a4').on('click',()=>bhkFilter(4))
+    $('li#BHK a.a5').on('click',()=>bhkFilter(5))
+    $('li#BHK a.a6').on('click',()=>bhkFilter(6))
+
+    const areaFilter = function(meanArea){
+      Data.forEach((ppt)=>{
+        if(Math.abs(meanArea - ppt.Sqfoot)>500 && meanArea<4500)
+          ppt.areaFlag = false
+        else
+          ppt.areaFlag = true
+      })
+      finalFilter()
+    }
+    $('li#AREA a.a0').on('click',()=>areaFilter(4500))
+    $('li#AREA a.a500').on('click',()=>areaFilter(500))
+    $('li#AREA a.a1500').on('click',()=>areaFilter(1500))
+    $('li#AREA a.a2500').on('click',()=>areaFilter(2500))
+    $('li#AREA a.a3500').on('click',()=>areaFilter(3500))
+    $('li#AREA a.a4500').on('click',()=>areaFilter(4500))
+
+    const ButtonSort = function(key,asc){
+      Data.sort(function(a,b){ 
+        return asc*(a[key] - b[key])
+      })
+      finalFilter()
+    }
+    ButtonSort('Price',1)
+    $('li#SORT a.plth').on('click',()=>ButtonSort('Price',1))
+    $('li#SORT a.phtl').on('click',()=>ButtonSort('Price',-1))
+    $('li#SORT a.alth').on('click',()=>ButtonSort('Sqfoot',1))
+    $('li#SORT a.ahtl').on('click',()=>ButtonSort('Sqfoot',-1))
+
+    const MostRecent = function(){
+      console.log('Most Recent Called! Work In PROGRESS :)')
+      Data.sort(function(a,b){
+        let now = new Date()
+        console.log(now,a.DATE)
+        let at = now.getTime() - a.DATE
+        let bt = now.getTime() - b.DATE
+        return at - bt
+      })
+    }
+    $('li#SORT a.MR').on('click',()=>MostRecent())
+
+    
+    
+    
+
+  
+    
+      
+    
+
+    
+
+    
+      
+
+  
+
+  
+    
