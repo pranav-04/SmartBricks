@@ -57,6 +57,8 @@ router.get('/:id',(req,res) =>{
         }else{
             res.render('property2',{
                 property:property,
+                lat : property.lat,
+                lon: property.lon
             })
         }
     })
