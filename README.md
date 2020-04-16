@@ -26,7 +26,7 @@
 ## How to run Code ?? 
 1) Open VS Code and press 
 <kbd>Ctrl +`</kbd>
-2) Open folder **trial 4** which you have downloaded from here.
+2) Open folder **Almost_there_5** which you have downloaded from here.
 3) ***``npm install``***
 4) ***``npm run dev``***
 5) Open Chrome browser and type ***``http://localhost:5000``*** 
@@ -34,7 +34,5 @@
 
 ## Remaining Work
 
-1) Google maps API link is remaining
-2) Statistic Page - Frontend and backend
-3) Advanced filter/ search bar
-4) Other tools Price estimator etc.., if time permits.
+1) Statistic Page - Frontend and backend
+2) Other tools Price estimator etc.., if time permits.
