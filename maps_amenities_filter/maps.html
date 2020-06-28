@@ -17,7 +17,7 @@
   	<script type="text/javascript">
   		var LeafIcon = L.Icon.extend({
 		    options: {
-		        iconSize:     [32, 32], // size of the icon
+		        iconSize:     [35, 35], // size of the icon
 	    		iconAnchor:   [20, 24], // point of the icon which will correspond to marker's location
 		    }
 		});
@@ -25,23 +25,35 @@
   		var foodicon = new LeafIcon({iconUrl: 'food.png'}),
   			schoolicon = new LeafIcon({iconUrl: 'school.png'}),
   			hospicon = new LeafIcon({iconUrl: 'hospital.png'});
+  			shopicon = new LeafIcon({iconUrl: 'shop.png'});
+  			gymicon = new LeafIcon({iconUrl: 'gym.png'});
   		var mymap = L.map('mapid').setView([23.18853, 72.62896], 9, food);
   		var marker = L.marker([23.18853, 72.62896]).addTo(mymap);
-  		var food_1 = L.marker([23.11, 72.02], {icon: foodicon}).bindPopup('This is Food 1'),
-		    food_2 = L.marker([23.14, 72.99], {icon: foodicon}).bindPopup('This is Food 2'),
-		    food_3 = L.marker([23.33, 72.8], {icon: foodicon}).bindPopup('This is Food 3'),
-		    food_4 = L.marker([23.27, 72.23], {icon: foodicon}).bindPopup('This is Food 4'),
+  		var food_1 = L.marker([23.11, 72.02], {icon: foodicon}).bindPopup('This is food 1'),
+		    food_2 = L.marker([23.14, 72.99], {icon: foodicon}).bindPopup('This is food 2'),
+		    food_3 = L.marker([23.33, 72.85], {icon: foodicon}).bindPopup('This is food 3'),
+		    food_4 = L.marker([23.27, 72.23], {icon: foodicon}).bindPopup('This is food 4'),
 		    s1 = L.marker([23.09, 72.52], {icon: schoolicon}).bindPopup('This is school 1'),
-		    s4 = L.marker([23.24, 72.99], {icon: schoolicon}).bindPopup('This is school 2'),
+		    s4 = L.marker([23.24, 72.90], {icon: schoolicon}).bindPopup('This is school 2'),
 		    s3 = L.marker([23.35, 72.77], {icon: schoolicon}).bindPopup('This is school 3'),
 		    s2 = L.marker([23.19, 72.53], {icon: schoolicon}).bindPopup('This is school 4'),
-		    h1 = L.marker([23.09, 72.46], {icon: hospicon}).bindPopup('This is clinic 1'),
+		    h1 = L.marker([23.39, 72.46], {icon: hospicon}).bindPopup('This is clinic 1'),
 		    h4 = L.marker([23.14, 72.10], {icon: hospicon}).bindPopup('This is clinic 2'),
 		    h3 = L.marker([23.45, 72.70], {icon: hospicon}).bindPopup('This is clinic 3'),
-		    h2 = L.marker([23.29, 72.14], {icon: hospicon}).bindPopup('This is clinic 4');
+		    h2 = L.marker([23.10, 72.84], {icon: hospicon}).bindPopup('This is clinic 4'),
+		    sh1 = L.marker([22.97, 72.77], {icon: shopicon}).bindPopup('This is shop 1'),
+		    sh4 = L.marker([23.00, 72.88], {icon: shopicon}).bindPopup('This is shop 2'),
+		    sh3 = L.marker([23.21, 72.79], {icon: shopicon}).bindPopup('This is shop 3'),
+		    sh2 = L.marker([23.49, 72.44], {icon: shopicon}).bindPopup('This is shop 4'),
+		    g1 = L.marker([22.89, 72.36], {icon: gymicon}).bindPopup('This is gym 1'),
+		    g4 = L.marker([23.24, 72.10], {icon: gymicon}).bindPopup('This is gym 2'),
+		    g3 = L.marker([22.93, 71.90], {icon: gymicon}).bindPopup('This is gym 3'),
+		    g2 = L.marker([23.18, 72.74], {icon: gymicon}).bindPopup('This is gym 4');
 		var food = L.layerGroup([food_1, food_2, food_3, food_4]);
 		var school = L.layerGroup([s1, s2, s3, s4]);
 		var hospital = L.layerGroup([h1, h2, h3, h4]);
+		var shop = L.layerGroup([sh1, sh2, sh3, sh4]);
+		var gym = L.layerGroup([g1, g2, g3, g4]);
 
   		L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
 		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -54,13 +66,15 @@
   		var overlayMaps = {
 		    "Food": food,
 		    "Schools": school, 
-		    "Hospitals":hospital
+		    "Hospitals":hospital,
+		    "Gym":gym,
+		    "Shops":shop
 		};
 		var baseLayers = {
 		    
 		};
 		L.control.layers(baseLayers,overlayMaps).addTo(mymap);
-		
+	
 		//When you click on the map at a certain location, it logs the coordinates in the console.
 		function onClick(e) {console.log(e.latlng);}
 		mymap.on('click', onClick);
